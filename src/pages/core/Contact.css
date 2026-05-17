@@ -1,0 +1,121 @@
+.contact-form {
+    background-color: var(--bg-secondary);
+    width: 95%;
+    max-width: 750px;
+    margin: 4rem auto;
+    padding: 3.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.contact-form h1 {
+    color: var(--bg-dark);
+    font-size: 2.8rem;
+    text-align: center;
+    font-weight: 700;
+}
+
+.contact-subtitle {
+    color: var(--bg-dark);
+    text-align: center;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.contact-form .row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+}
+
+.input-group label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--bg-dark);
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+    border: 1px solid var(--border);
+    padding: 0.8rem;
+    border-radius: 0.8rem;
+    background-color: #FAFAFA;
+    font-size: 1rem;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+    border-color: var(--primary);
+    background-color: #FFF;
+    outline: none;
+}
+
+.contact-form button[type="submit"] {
+    background-color: var(--bg-dark);
+    color: #FFFFFF;
+    border: none;
+    padding: 1rem 3.5rem;
+    width: fit-content;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    letter-spacing: 1px;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.contact-form button[type="submit"]:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    background-color: var(--bg-dark-alt);
+}
+
+.contact-form button[type="submit"]:disabled {
+    background-color: var(--border);
+    cursor: not-allowed;
+}
+
+.form-status {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-status.error {
+    background: #FEE2E2;
+    color: var(--danger);
+}
+
+.form-status.success {
+    background: #DCFCE7;
+    color: #16A34A;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .contact-form {
+        padding: 2rem 1.5rem;
+    }
+
+    .contact-form .row {
+        flex-direction: column;
+    }
+
+    .contact-form button[type="submit"] {
+        width: 100%;
+    }
+}

@@ -1,0 +1,1479 @@
+[
+    {
+        "id": "book-001",
+        "title": "O Hobbit",
+        "language": "Português (PT)",
+        "author": "J.R.R. Tolkien",
+        "pages": 310,
+        "price": 21.9,
+        "image": "image1.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Clássicos"
+        ],
+        "tags": [
+            "Clássico",
+            "Aventura"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 10,
+        "description": "Bilbo Bolseiro era um hobbit que vivia em sua toca sem qualquer intenção de se meter em aventuras. Tudo muda quando Gandalf e treze anões batem à sua porta, levando-o a uma jornada para recuperar um tesouro guardado pelo dragão Smaug."
+    },
+    {
+        "id": "book-002",
+        "title": "Harry Potter e a Pedra Filosofal",
+        "language": "Português (PT)",
+        "author": "J.K. Rowling",
+        "pages": 320,
+        "price": 15.89,
+        "image": "image2.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Infantil & Juvenil"
+        ],
+        "tags": [
+            "Aventura",
+            "Magia"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "O início do fenômeno mundial que encantou gerações. Conheça a história de Harry Potter, um órfão que descobre ser um bruxo no seu 11º aniversário."
+    },
+    {
+        "id": "book-003",
+        "title": "Sapiens: Uma Breve História da Humanidade",
+        "language": "Português (PT)",
+        "author": "Yuval Noah Harari",
+        "pages": 498,
+        "price": 22.0,
+        "image": "image3.jpg",
+        "category": [
+            "História",
+            "Ciência"
+        ],
+        "tags": [
+            "Não Ficção"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Como uma espécie insignificante conseguiu dominar o planeta? Harari cruza ciência e história para explicar como o Homo Sapiens se tornou o mestre do mundo."
+    },
+    {
+        "id": "book-004",
+        "title": "1929: Nos bastidores do maior crash de Wall Street",
+        "language": "Português (PT)",
+        "author": "Andrew Ross Sorkin",
+        "pages": 640,
+        "price": 23.5,
+        "image": "image4.jpg",
+        "category": [
+            "História",
+            "Negócios"
+        ],
+        "tags": [
+            "Negócios",
+            "Finanças"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 15,
+        "description": "Um mergulho fascinante e detalhado nos dias que abalaram o sistema financeiro mundial."
+    },
+    {
+        "id": "book-005",
+        "title": "Astérix na Lusitânia",
+        "language": "Português (PT)",
+        "author": "Fabcaro",
+        "pages": 48,
+        "price": 12.5,
+        "image": "image5.jpg",
+        "category": [
+            "Infantil & Juvenil",
+            "Aventura"
+        ],
+        "tags": [
+            "Banda Desenhada"
+        ],
+        "isBestSeller": false,
+        "isNew": true,
+        "discount": 0,
+        "description": "A dupla de gauleses mais famosa da história viaja até aos confins da Lusitânia para ajudar os bravos lusitanos a resistir às legiões de César."
+    },
+    {
+        "id": "book-006",
+        "title": "O Processo",
+        "language": "Português (PT)",
+        "author": "Franz Kafka",
+        "pages": 304,
+        "price": 14.29,
+        "image": "image6.jpg",
+        "category": [
+            "Clássicos",
+            "Ficção"
+        ],
+        "tags": [
+            "Filosófico"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Josef K. é detido uma manhã sem ter cometido crime algum, preso numa teia de processos burocráticos e tribunais inacessíveis."
+    },
+    {
+        "id": "book-007",
+        "title": "O Silmarillion",
+        "language": "Português (PT)",
+        "author": "J.R.R. Tolkien",
+        "pages": 448,
+        "price": 19.95,
+        "image": "image7.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Clássicos"
+        ],
+        "tags": [
+            "Épico",
+            "Mitologia"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 10,
+        "description": "A obra-mestra que fundamenta todo o universo da Terra Média, narrando a criação do mundo e a queda de Melkor."
+    },
+    {
+        "id": "book-008",
+        "title": "Elon Musk",
+        "language": "Inglês (EN)",
+        "author": "Walter Isaacson",
+        "pages": 688,
+        "price": 26.9,
+        "image": "image8.jpg",
+        "category": [
+            "Biografia",
+            "Tecnologia",
+            "Negócios"
+        ],
+        "tags": [
+            "Inovação"
+        ],
+        "isBestSeller": false,
+        "isNew": true,
+        "discount": 0,
+        "description": "A jornada íntima e surpreendente do empreendedor mais controverso do mundo, revelando os bastidores da Tesla e SpaceX."
+    },
+    {
+        "id": "book-009",
+        "title": "Harry Potter e o Prisioneiro de Azkaban",
+        "language": "Português (PT)",
+        "author": "J.K. Rowling",
+        "pages": 317,
+        "price": 17.9,
+        "image": "image9.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Infantil & Juvenil"
+        ],
+        "tags": [
+            "Magia"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Harry enfrenta Dementadores e descobre verdades chocantes sobre o passado de seu pai enquanto Sirius Black foge de Azkaban."
+    },
+    {
+        "id": "book-010",
+        "title": "Duna",
+        "language": "Português (PT)",
+        "author": "Frank Herbert",
+        "pages": 412,
+        "price": 19.9,
+        "image": "image10.jpg",
+        "category": [
+            "Ficção",
+            "Fantasia",
+            "Clássicos"
+        ],
+        "tags": [
+            "Sci-Fi"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 15,
+        "description": "A maior epopeia de ficção científica de todos os tempos, num planeta deserto onde a 'especiaria' define o destino de impérios."
+    },
+    {
+        "id": "book-011",
+        "title": "Hábitos Atómicos",
+        "language": "Português (PT)",
+        "author": "James Clear",
+        "pages": 320,
+        "price": 19.0,
+        "image": "image11.jpg",
+        "category": [
+            "Autoajuda",
+            "Negócios"
+        ],
+        "tags": [
+            "Produtividade"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Como pequenas mudanças de 1% todos os dias podem levar a resultados gigantescos a longo prazo através de sistemas poderosos."
+    },
+    {
+        "id": "book-012",
+        "title": "Harry Potter e o Cálice de Fogo",
+        "language": "Português (PT)",
+        "author": "J.K. Rowling",
+        "pages": 636,
+        "price": 22.5,
+        "image": "image12.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Infantil & Juvenil"
+        ],
+        "tags": [
+            "Ação"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Hogwarts sedia o Torneio Tribruxo, mas o nome de Harry é sorteado misteriosamente para uma competição mortal."
+    },
+    {
+        "id": "book-013",
+        "title": "1984",
+        "language": "Português (PT)",
+        "author": "George Orwell",
+        "pages": 328,
+        "price": 17.9,
+        "image": "image13.jpg",
+        "category": [
+            "Ficção",
+            "Clássicos"
+        ],
+        "tags": [
+            "Distopia"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 0,
+        "description": "Em uma sociedade sob vigilância constante do Grande Irmão, Winston Smith ousa questionar a verdade e buscar o amor."
+    },
+    {
+        "id": "book-014",
+        "title": "A Cidade e Suas Muralhas Incertas",
+        "language": "Português (PT)",
+        "author": "Haruki Murakami",
+        "pages": 560,
+        "price": 26.5,
+        "image": "image14.jpg",
+        "category": [
+            "Ficção",
+            "Fantasia"
+        ],
+        "tags": [
+            "Surrealismo",
+            "Lançamento"
+        ],
+        "isBestSeller": false,
+        "isNew": true,
+        "discount": 10,
+        "description": "Uma narrativa hipnotizante onde as fronteiras entre o mundo real e o subconsciente se misturam numa cidade cercada por muralhas."
+    },
+    {
+        "id": "book-015",
+        "title": "A Próxima Vaga",
+        "language": "Português (PT)",
+        "author": "Mustafa Suleyman",
+        "pages": 416,
+        "price": 21.0,
+        "image": "image15.jpg",
+        "category": [
+            "Tecnologia",
+            "Ciência"
+        ],
+        "tags": [
+            "IA"
+        ],
+        "isBestSeller": false,
+        "isNew": true,
+        "discount": 10,
+        "description": "Um alerta urgente sobre o futuro da inteligência artificial e da biotecnologia e como elas podem transformar a sociedade."
+    },
+    {
+        "id": "book-016",
+        "title": "Geração Ansiosa",
+        "language": "Português (PT)",
+        "author": "Jonathan Haidt",
+        "pages": 400,
+        "price": 24.9,
+        "image": "image16.jpg",
+        "category": [
+            "Ciência",
+            "Autoajuda"
+        ],
+        "tags": [
+            "Psicologia"
+        ],
+        "isBestSeller": false,
+        "isNew": true,
+        "discount": 0,
+        "description": "Uma investigação sobre como a transição para uma infância baseada em smartphones alterou o desenvolvimento de uma geração inteira."
+    },
+    {
+        "id": "book-017",
+        "title": "O Senhor dos Anéis: A Irmandade do Anel",
+        "language": "Português (PT)",
+        "author": "J.R.R. Tolkien",
+        "pages": 423,
+        "price": 23.9,
+        "image": "image17.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Clássicos"
+        ],
+        "tags": [
+            "Épico"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 10,
+        "description": "Frodo Bolseiro inicia a sua jornada para destruir o Um Anel nas chamas da Montanha da Perdição."
+    },
+    {
+        "id": "book-018",
+        "title": "Ultra-processados",
+        "language": "Português (PT)",
+        "author": "Chris van Tulleken",
+        "pages": 384,
+        "price": 18.9,
+        "image": "image18.jpg",
+        "category": [
+            "Ciência",
+            "História"
+        ],
+        "tags": [
+            "Saúde"
+        ],
+        "isBestSeller": false,
+        "isNew": true,
+        "discount": 0,
+        "description": "Uma investigação sobre como a comida moderna foi transformada por grandes corporações em substâncias para consumo excessivo."
+    },
+    {
+        "id": "book-019",
+        "title": "Harry Potter e o Príncipe Misterioso",
+        "language": "Português (PT)",
+        "author": "J.K. Rowling",
+        "pages": 510,
+        "price": 21.0,
+        "image": "image19.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Infantil & Juvenil"
+        ],
+        "tags": [
+            "Mistério"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "O penúltimo capítulo da saga mergulha nas memórias do passado de Lord Voldemort enquanto Hogwarts deixa de ser segura."
+    },
+    {
+        "id": "book-020",
+        "title": "Becoming: A Minha História",
+        "language": "Português (PT)",
+        "author": "Michelle Obama",
+        "pages": 448,
+        "price": 20.0,
+        "image": "image20.jpg",
+        "category": [
+            "Biografia",
+            "História"
+        ],
+        "tags": [
+            "Inspiração"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 15,
+        "description": "Memórias poderosas desde a infância em Chicago até ao tempo em que viveu na Casa Branca."
+    },
+    {
+        "id": "book-021",
+        "title": "Steve Jobs",
+        "language": "Inglês (EN)",
+        "author": "Walter Isaacson",
+        "pages": 656,
+        "price": 23.0,
+        "image": "image21.jpg",
+        "category": [
+            "Biografia",
+            "Tecnologia",
+            "Negócios"
+        ],
+        "tags": [
+            "Tecnologia"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Baseada em mais de quarenta entrevistas realizadas com Jobs, esta biografia narra a vida do homem que revolucionou a tecnologia e o design digital."
+    },
+    {
+        "id": "book-022",
+        "title": "Harry Potter e os Talismãs da Morte",
+        "language": "Português (PT)",
+        "author": "J.K. Rowling",
+        "pages": 607,
+        "price": 25.5,
+        "image": "image22.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Infantil & Juvenil"
+        ],
+        "tags": [
+            "Épico",
+            "Ação"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "O confronto final chegou. Harry, Ron e Hermione abandonam Hogwarts para destruir as Horcruxes e derrotar Voldemort de uma vez por todas."
+    },
+    {
+        "id": "book-023",
+        "title": "O Alquimista",
+        "language": "Português (PT)",
+        "author": "Paulo Coelho",
+        "pages": 208,
+        "price": 13.0,
+        "image": "image23.jpg",
+        "category": [
+            "Ficção",
+            "Autoajuda"
+        ],
+        "tags": [
+            "Autoajuda"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "A jornada do jovem pastor Santiago pelo deserto egípcio em busca de um tesouro escondido e da sua Lenda Pessoal."
+    },
+    {
+        "id": "book-024",
+        "title": "It - A Coisa",
+        "language": "Português (PT)",
+        "author": "Stephen King",
+        "pages": 1138,
+        "price": 22.2,
+        "image": "image24.jpg",
+        "category": [
+            "Ficção",
+            "Aventura"
+        ],
+        "tags": [
+            "Terror"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 20,
+        "description": "Sete amigos enfrentam uma criatura milenar que assume a forma dos seus piores medos na cidade de Derry."
+    },
+    {
+        "id": "book-025",
+        "title": "O Senhor dos Anéis: As Duas Torres",
+        "language": "Português (PT)",
+        "author": "J.R.R. Tolkien",
+        "pages": 352,
+        "price": 23.9,
+        "image": "image25.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Clássicos"
+        ],
+        "tags": [
+            "Clássico",
+            "Aventura"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 10,
+        "description": "Enquanto Frodo e Sam avançam rumo a Mordor, o restante da comitiva se prepara para a guerra em Rohan contra a traição de Saruman."
+    },
+    {
+        "id": "book-026",
+        "title": "Clean Code",
+        "language": "Inglês (EN)",
+        "author": "Robert C. Martin",
+        "pages": 464,
+        "price": 30.0,
+        "image": "image26.jpg",
+        "category": [
+            "Tecnologia",
+            "Negócios"
+        ],
+        "tags": [
+            "Programação"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 20,
+        "description": "O guia essencial para escrever códigos elegantes, fáceis de manter e que se tornam uma obra de arte da engenharia de software."
+    },
+    {
+        "id": "book-027",
+        "title": "Intermezzo",
+        "language": "Inglês (EN)",
+        "author": "Sally Rooney",
+        "pages": 448,
+        "price": 22.0,
+        "image": "image27.jpg",
+        "category": [
+            "Romance",
+            "Ficção"
+        ],
+        "tags": [
+            "Drama",
+            "Lançamento"
+        ],
+        "isBestSeller": false,
+        "isNew": true,
+        "discount": 0,
+        "description": "Uma história comovente sobre dois irmãos em luto e as complexidades das relações familiares e amorosas."
+    },
+    {
+        "id": "book-028",
+        "title": "Memórias Póstumas de Brás Cubas",
+        "language": "Português (PT)",
+        "author": "Machado de Assis",
+        "pages": 288,
+        "price": 15.0,
+        "image": "image28.jpg",
+        "category": [
+            "Clássicos",
+            "Ficção"
+        ],
+        "tags": [
+            "Realismo"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 10,
+        "description": "Um defunto autor narra as suas memórias com ironia mordaz, expondo as hipocrisias da sociedade brasileira do século XIX."
+    },
+    {
+        "id": "book-029",
+        "title": "O Senhor dos Anéis: O Retorno do Rei",
+        "language": "Português (PT)",
+        "author": "J.R.R. Tolkien",
+        "pages": 416,
+        "price": 23.9,
+        "image": "image29.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Clássicos"
+        ],
+        "tags": [
+            "Clássico",
+            "Aventura"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 10,
+        "description": "O destino da Terra Média decide-se nos campos de Pelennor enquanto Frodo enfrenta o peso esmagador do Um Anel."
+    },
+    {
+        "id": "book-030",
+        "title": "Harry Potter e a Ordem da Fênix",
+        "language": "Português (PT)",
+        "author": "J.K. Rowling",
+        "pages": 766,
+        "price": 24.9,
+        "image": "image30.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Infantil & Juvenil"
+        ],
+        "tags": [
+            "Rebelião",
+            "Drama"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Harry forma a Armada de Dumbledore para combater o retorno de Voldemort e a tirania de Dolores Umbridge em Hogwarts."
+    },
+    {
+        "id": "book-031",
+        "title": "Box Trilogia Escravidão",
+        "language": "Português (PT)",
+        "author": "Laurentino Gomes",
+        "pages": 1600,
+        "price": 66.6,
+        "image": "image31.jpg",
+        "category": [
+            "História",
+            "Ciência"
+        ],
+        "tags": [
+            "Não Ficção"
+        ],
+        "isBestSeller": false,
+        "isNew": true,
+        "discount": 20,
+        "description": "Uma investigação profunda pela história do tráfico transatlântico de escravos e as suas cicatrizes sociais e culturais."
+    },
+    {
+        "id": "book-032",
+        "title": "O Rapaz que Nadava com Piranhas",
+        "language": "Português (PT)",
+        "author": "David Almond",
+        "pages": 256,
+        "price": 13.5,
+        "image": "image32.jpg",
+        "category": [
+            "Infantil & Juvenil",
+            "Aventura"
+        ],
+        "tags": [
+            "Fábula"
+        ],
+        "isBestSeller": false,
+        "isNew": true,
+        "discount": 0,
+        "description": "Stanley Potts foge com uma feira itinerante para enfrentar o seu desafio supremo: nadar num tanque de piranhas."
+    },
+    {
+        "id": "book-033",
+        "title": "Orgulho e Preconceito",
+        "language": "Português (PT)",
+        "author": "Jane Austen",
+        "pages": 432,
+        "price": 16.9,
+        "image": "image33.jpg",
+        "category": [
+            "Romance",
+            "Clássicos"
+        ],
+        "tags": [
+            "Clássico"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 5,
+        "description": "Elizabeth Bennet enfrenta pressões sociais e o altivo Sr. Darcy nesta obra sobre amor e costumes na Inglaterra georgiana."
+    },
+    {
+        "id": "book-034",
+        "title": "Os Miseráveis",
+        "language": "Português (PT)",
+        "author": "Victor Hugo",
+        "pages": 1463,
+        "price": 24.0,
+        "image": "image34.jpg",
+        "category": [
+            "Clássicos",
+            "História",
+            "Romance"
+        ],
+        "tags": [
+            "Drama"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 15,
+        "description": "Jean Valjean tenta reconstruir a vida enquanto é caçado pelo inspetor Javert na França pós-revolucionária."
+    },
+    {
+        "id": "book-035",
+        "title": "Friends, Lovers, and the Big Terrible Thing",
+        "language": "Inglês (EN)",
+        "author": "Matthew Perry",
+        "pages": 272,
+        "price": 17.5,
+        "image": "image35.jpg",
+        "category": [
+            "Biografia",
+            "História"
+        ],
+        "tags": [
+            "Memórias"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Matthew Perry abre o jogo sobre o sucesso em 'Friends' e a sua luta visceral contra os vícios."
+    },
+    {
+        "id": "book-036",
+        "title": "Eragon",
+        "language": "Inglês (EN)",
+        "author": "Christopher Paolini",
+        "pages": 509,
+        "price": 26.0,
+        "image": "image36.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Infantil & Juvenil"
+        ],
+        "tags": [
+            "Aventura"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Um jovem camponês encontra um ovo de dragão e torna-se o último Cavaleiro de Dragão destinado a derrubar um rei tirano."
+    },
+    {
+        "id": "book-037",
+        "title": "O Livro do Desassossego",
+        "language": "Português (PT)",
+        "author": "Fernando Pessoa",
+        "pages": 520,
+        "price": 16.0,
+        "image": "image37.jpg",
+        "category": [
+            "Clássicos",
+            "Ficção"
+        ],
+        "tags": [
+            "Poesia"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 0,
+        "description": "Fragmentos e pensamentos sobre a existência e a melancolia de Lisboa, assinados pelo heterónimo Bernardo Soares."
+    },
+    {
+        "id": "book-038",
+        "title": "System Design Interview",
+        "language": "Inglês (EN)",
+        "author": "Alex Xu",
+        "pages": 304,
+        "price": 28.95,
+        "image": "image38.jpg",
+        "category": [
+            "Tecnologia",
+            "Ciência"
+        ],
+        "tags": [
+            "Programação"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "O manual definitivo para engenheiros que desejam dominar a criação de sistemas de larga escala."
+    },
+    {
+        "id": "book-039",
+        "title": "O Principezinho",
+        "language": "Português (PT)",
+        "author": "Antoine de Saint-Exupéry",
+        "pages": 96,
+        "price": 12.0,
+        "image": "image39.jpg",
+        "category": [
+            "Infantil & Juvenil",
+            "Clássicos"
+        ],
+        "tags": [
+            "Clássico"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Um piloto encontra um pequeno príncipe no Saara e redescobre as verdades simples da vida."
+    },
+    {
+        "id": "book-040",
+        "title": "A Culpa é das Estrelas",
+        "language": "Português (PT)",
+        "author": "John Green",
+        "pages": 313,
+        "price": 16.5,
+        "image": "image40.jpg",
+        "category": [
+            "Romance",
+            "Infantil & Juvenil"
+        ],
+        "tags": [
+            "Drama"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 10,
+        "description": "Hazel e Augustus vivem uma história de amor agridoce enquanto enfrentam as incertezas da doença."
+    },
+    {
+        "id": "book-041",
+        "title": "Uma Breve História do Tempo",
+        "language": "Português (PT)",
+        "author": "Stephen Hawking",
+        "pages": 256,
+        "price": 21.0,
+        "image": "image41.jpg",
+        "category": [
+            "Ciência",
+            "Tecnologia"
+        ],
+        "tags": [
+            "Física"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 12,
+        "description": "Stephen Hawking desmistifica o cosmos, explorando a origem do universo e a natureza dos buracos negros."
+    },
+    {
+        "id": "book-042",
+        "title": "Os Sete Maridos de Evelyn Hugo",
+        "language": "Português (PT)",
+        "author": "Taylor Jenkins Reid",
+        "pages": 360,
+        "price": 16.9,
+        "image": "image42.jpg",
+        "category": [
+            "Ficção",
+            "Romance"
+        ],
+        "tags": [
+            "Mistério"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 10,
+        "description": "A lendária estrela de Hollywood revela os segredos por trás dos seus sete casamentos e o seu grande amor proibido."
+    },
+    {
+        "id": "book-043",
+        "title": "Mindset",
+        "language": "Português (PT)",
+        "author": "Carol Dweck",
+        "pages": 320,
+        "price": 18.0,
+        "image": "image43.jpg",
+        "category": [
+            "Autoajuda",
+            "Ciência"
+        ],
+        "tags": [
+            "Psicologia"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Como a nossa atitude mental determina o sucesso e a diferença entre o mindset fixo e o de crescimento."
+    },
+    {
+        "id": "book-044",
+        "title": "Mensagem",
+        "language": "Português (PT)",
+        "author": "Fernando Pessoa",
+        "pages": 120,
+        "price": 8.5,
+        "image": "image44.jpg",
+        "category": [
+            "Clássicos",
+            "História"
+        ],
+        "tags": [
+            "Poesia"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 0,
+        "description": "Através de símbolos e heróis, Pessoa reconstrói a glória mística de Portugal nesta obra-mestra do modernismo."
+    },
+    {
+        "id": "book-045",
+        "title": "Crime e Castigo",
+        "language": "Português (PT)",
+        "author": "Fiódor Dostoiévski",
+        "pages": 671,
+        "price": 23.90,
+        "image": "image45.jpg",
+        "category": [
+            "Clássicos",
+            "Ficção"
+        ],
+        "tags": [
+            "Filosófico"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 12,
+        "description": "Um mergulho psicológico profundo na culpa e redenção de um estudante que planeia o crime perfeito."
+    },
+    {
+        "id": "book-046",
+        "title": "Breves Respostas a Grandes Perguntas",
+        "language": "Português (PT)",
+        "author": "Stephen Hawking",
+        "pages": 256,
+        "price": 15.2,
+        "image": "image46.jpg",
+        "category": [
+            "Ciência",
+            "Tecnologia"
+        ],
+        "tags": [
+            "Física"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Reflexões sobre a colonização do espaço, IA e o futuro da humanidade na obra final de Hawking."
+    },
+    {
+        "id": "book-047",
+        "title": "Box Diário de um Banana",
+        "language": "Português (PT)",
+        "author": "Jeff Kinney",
+        "pages": 2240,
+        "price": 125.0,
+        "image": "image47.jpg",
+        "category": [
+            "Infantil & Juvenil",
+            "Aventura"
+        ],
+        "tags": [
+            "Humor"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 15,
+        "description": "As aventuras hilariantes de Greg Heffley que captam perfeitamente a angústia da pré-adolescência."
+    },
+    {
+        "id": "book-048",
+        "title": "Admirável Mundo Novo",
+        "language": "Português (PT)",
+        "author": "Aldous Huxley",
+        "pages": 288,
+        "price": 16.5,
+        "image": "image48.jpg",
+        "category": [
+            "Ficção",
+            "Clássicos"
+        ],
+        "tags": [
+            "Distopia"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 0,
+        "description": "Uma visão arrepiante do futuro onde o prazer é a única lei e a liberdade é uma mercadoria perigosa."
+    },
+    {
+        "id": "book-049",
+        "title": "A Metamorfose",
+        "language": "Português (PT)",
+        "author": "Franz Kafka",
+        "pages": 128,
+        "price": 11.0,
+        "image": "image49.jpg",
+        "category": [
+            "Clássicos",
+            "Ficção"
+        ],
+        "tags": [
+            "Filosófico"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 0,
+        "description": "Gregor Samsa acorda transformado num inseto monstruoso nesta metáfora sobre alienação e isolamento."
+    },
+    {
+        "id": "book-050",
+        "title": "O Grande Gatsby",
+        "language": "Português (PT)",
+        "author": "F. Scott Fitzgerald",
+        "pages": 180,
+        "price": 14.0,
+        "image": "image50.jpg",
+        "category": [
+            "Clássicos",
+            "Romance"
+        ],
+        "tags": [
+            "Romance"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 0,
+        "description": "Uma crítica devastadora ao Sonho Americano através dos excessos da Era do Jazz e do enigmático Jay Gatsby."
+    },
+    {
+        "id": "book-051",
+        "title": "Me Before You",
+        "language": "Inglês (EN)",
+        "author": "Jojo Moyes",
+        "pages": 480,
+        "price": 15.9,
+        "image": "image51.jpg",
+        "category": [
+            "Romance",
+            "Ficção"
+        ],
+        "tags": [
+            "Drama"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 10,
+        "description": "Louisa Clark torna-se cuidadora de Will Traynor, que ficou paralisado após um acidente. Uma história de amor profunda que questiona o significado da vida."
+    },
+    {
+        "id": "book-052",
+        "title": "Box Fundação: Saga Completa",
+        "language": "Português (PT)",
+        "author": "Isaac Asimov",
+        "pages": 2880,
+        "price": 182.5,
+        "image": "image52.jpg",
+        "category": [
+            "Ciência",
+            "Ficção"
+        ],
+        "tags": [
+            "Sci-Fi"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 15,
+        "description": "A obra-prima de Asimov sobre a queda do Império Galáctico e a preservação do conhecimento humano através de milénios."
+    },
+    {
+        "id": "book-053",
+        "title": "Memória de Elefante",
+        "language": "Português (PT)",
+        "author": "António Lobo Antunes",
+        "pages": 240,
+        "price": 18.8,
+        "image": "image53.jpg",
+        "category": [
+            "Ficção",
+            "Clássicos"
+        ],
+        "tags": [
+            "Literatura Portuguesa"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 0,
+        "description": "O fluxo de consciência de um psiquiatra em crise pelas ruas de Lisboa, navegando pelas suas memórias e solidão."
+    },
+    {
+        "id": "book-054",
+        "title": "Um Rio Chamado Tempo",
+        "language": "Português (PT)",
+        "author": "Mia Couto",
+        "pages": 256,
+        "price": 14.9,
+        "image": "image54.jpg",
+        "category": [
+            "Ficção"
+        ],
+        "tags": [
+            "Literatura Lusófona"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 0,
+        "description": "Uma narrativa entre o realismo e o onírico que explora a herança colonial e os mitos africanos num Moçambique em transformação."
+    },
+    {
+        "id": "book-055",
+        "title": "Educated",
+        "language": "Inglês (EN)",
+        "author": "Tara Westover",
+        "pages": 334,
+        "price": 19.0,
+        "image": "image55.jpg",
+        "category": [
+            "Biografia",
+            "História"
+        ],
+        "tags": [
+            "Superação"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 10,
+        "description": "Um relato extraordinário sobre o poder transformador da educação e o custo de romper com origens fundamentalistas radicais."
+    },
+    {
+        "id": "book-056",
+        "title": "Cem Anos de Solidão",
+        "language": "Português (PT)",
+        "author": "Gabriel García Márquez",
+        "pages": 448,
+        "price": 20.0,
+        "image": "image56.jpg",
+        "category": [
+            "Clássicos",
+            "Ficção"
+        ],
+        "tags": [
+            "Realismo Mágico"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 0,
+        "description": "A ascensão e queda da família Buendía em Macondo, uma obra-prima que narra a história da América Latina através da solidão."
+    },
+    {
+        "id": "book-057",
+        "title": "O Conto da Aia",
+        "language": "Português (PT)",
+        "author": "Margaret Atwood",
+        "pages": 368,
+        "price": 18.5,
+        "image": "image57.jpg",
+        "category": [
+            "Ficção",
+            "Clássicos"
+        ],
+        "tags": [
+            "Distopia",
+            "Feminismo"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Uma distopia profética sobre um regime teocrático onde as mulheres perdem os seus direitos, focada na luta pela resistência e identidade."
+    },
+    {
+        "id": "book-058",
+        "title": "O Diário de Anne Frank",
+        "language": "Português (PT)",
+        "author": "Anne Frank",
+        "pages": 352,
+        "price": 14.9,
+        "image": "image58.jpg",
+        "category": [
+            "Biografia",
+            "Clássicos",
+            "História"
+        ],
+        "tags": [
+            "Holocausto",
+            "Não Ficção"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "O testemunho imortal da jovem Anne Frank enquanto se escondia da ocupação nazi no anexo secreto em Amesterdão."
+    },
+    {
+        "id": "book-059",
+        "title": "Ensaio Sobre a Cegueira",
+        "language": "Português (PT)",
+        "author": "José Saramago",
+        "pages": 312,
+        "price": 18.0,
+        "image": "image59.jpg",
+        "category": [
+            "Clássicos",
+            "Ficção"
+        ],
+        "tags": [
+            "Literatura Portuguesa"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Uma radiografia implacável da sociedade através de uma epidemia de cegueira branca que revela a fragilidade da civilização."
+    },
+    {
+        "id": "book-060",
+        "title": "Harry Potter e a Câmara dos Segredos",
+        "language": "Português (PT)",
+        "author": "J.K. Rowling",
+        "pages": 252,
+        "price": 16.5,
+        "image": "image60.jpg",
+        "category": [
+            "Fantasia",
+            "Aventura",
+            "Infantil & Juvenil"
+        ],
+        "tags": [
+            "Mistério"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "No seu segundo ano, Harry enfrenta uma força antiga que petrifica alunos e ameaça fechar a escola de Hogwarts."
+    },
+    {
+        "id": "book-061",
+        "title": "O Retrato de Dorian Gray",
+        "language": "Português (PT)",
+        "author": "Oscar Wilde",
+        "pages": 240,
+        "price": 13.9,
+        "image": "image61.jpg",
+        "category": [
+            "Clássicos",
+            "Ficção"
+        ],
+        "tags": [
+            "Filosófico",
+            "Terror Psicológico"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Um pacto faustiano onde um retrato envelhece com os pecados de Dorian enquanto ele mantém a juventude eterna."
+    },
+    {
+        "id": "book-062",
+        "title": "O Nome da Rosa",
+        "language": "Português (PT)",
+        "author": "Umberto Eco",
+        "pages": 592,
+        "price": 21.0,
+        "image": "image62.jpg",
+        "category": [
+            "Ficção",
+            "História"
+        ],
+        "tags": [
+            "Mistério",
+            "Histórico"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 10,
+        "description": "Um mistério policial ambientado numa abadia medieval, unindo erudição histórica a uma trama de crimes e conspirações."
+    },
+    {
+        "id": "book-063",
+        "title": "A Arte da Guerra",
+        "language": "Português (PT)",
+        "author": "Sun Tzu",
+        "pages": 128,
+        "price": 19.9,
+        "image": "image63.jpg",
+        "category": [
+            "Não Ficção",
+            "Negócios"
+        ],
+        "tags": [
+            "Estratégia"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 10,
+        "description": "O guia supremo de estratégia que utiliza princípios militares milenares aplicados à gestão e aos negócios modernos."
+    },
+    {
+        "id": "book-064",
+        "title": "Eu Sou Malala",
+        "language": "Português (PT)",
+        "author": "Malala Yousafzai",
+        "pages": 368,
+        "price": 16.5,
+        "image": "image64.jpg",
+        "category": [
+            "Biografia",
+            "História"
+        ],
+        "tags": [
+            "Direitos Humanos",
+            "Inspiração"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "A história da jovem que desafiou os Talibãs pelo direito à educação e se tornou o símbolo global do ativismo feminino."
+    },
+    {
+        "id": "book-065",
+        "title": "O Código Da Vinci",
+        "language": "Português (PT)",
+        "author": "Dan Brown",
+        "pages": 432,
+        "price": 18.9,
+        "image": "image65.jpg",
+        "category": [
+            "Ficção",
+            "História"
+        ],
+        "tags": [
+            "Suspense",
+            "Mistério"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Robert Langdon tenta desvendar um segredo religioso milenar oculto nas obras de Leonardo da Vinci."
+    },
+    {
+        "id": "book-066",
+        "title": "Persépolis",
+        "language": "Português (PT)",
+        "author": "Marjane Satrapi",
+        "pages": 352,
+        "price": 22.0,
+        "image": "image66.jpg",
+        "category": [
+            "Biografia",
+            "História"
+        ],
+        "tags": [
+            "Banda Desenhada",
+            "Memórias"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 12,
+        "description": "Autobiografia gráfica sobre o crescimento de uma jovem durante a Revolução Islâmica no Irão."
+    },
+    {
+        "id": "book-067",
+        "title": "A Menina que Roubava Livros",
+        "language": "Português (PT)",
+        "author": "Markus Zusak",
+        "pages": 480,
+        "price": 16.5,
+        "image": "image67.jpg",
+        "category": [
+            "Ficção",
+            "História"
+        ],
+        "tags": [
+            "Drama"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Narrado pela Morte, acompanha Liesel enquanto ela encontra conforto em livros roubados na Alemanha nazi."
+    },
+    {
+        "id": "book-068",
+        "title": "O Oceano no Fim do Caminho",
+        "language": "Português (PT)",
+        "author": "Neil Gaiman",
+        "pages": 208,
+        "price": 17.0,
+        "image": "image68.jpg",
+        "category": [
+            "Ficção",
+            "Fantasia"
+        ],
+        "tags": [
+            "Realismo Mágico"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "Uma fábula sombria sobre memórias de infância, forças ancestrais e o sacrifício necessário para enfrentar monstros."
+    },
+    {
+        "id": "book-069",
+        "title": "Flores para Algernon",
+        "language": "Português (PT)",
+        "author": "Daniel Keyes",
+        "pages": 288,
+        "price": 17.0,
+        "image": "image69.jpg",
+        "category": [
+            "Ficção",
+            "Ciência"
+        ],
+        "tags": [
+            "Sci-Fi",
+            "Drama"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 5,
+        "description": "Charlie passa por uma cirurgia experimental para triplicar o seu QI, enfrentando o impacto emocional da sua nova inteligência."
+    },
+    {
+        "id": "book-070",
+        "title": "O Morro dos Ventos Uivantes",
+        "language": "Português (PT)",
+        "author": "Emily Brontë",
+        "pages": 368,
+        "price": 12.5,
+        "image": "image70.jpg",
+        "category": [
+            "Clássicos",
+            "Romance"
+        ],
+        "tags": [
+            "Gótico",
+            "Drama"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 0,
+        "description": "Uma história gótica de obsessão e vingança entre Catherine e Heathcliff nas charnecas desoladas de Yorkshire."
+    },
+    {
+        "id": "book-071",
+        "title": "Meditações",
+        "language": "Português (PT)",
+        "author": "Marco Aurélio",
+        "pages": 192,
+        "price": 15.0,
+        "image": "image71.jpg",
+        "category": [
+            "Não Ficção",
+            "História"
+        ],
+        "tags": [
+            "Filosofia",
+            "Estoicismo"
+        ],
+        "isBestSeller": true,
+        "isNew": false,
+        "discount": 0,
+        "description": "O diário pessoal do imperador romano que se tornou o manual definitivo sobre resiliência e paz interior."
+    },
+    {
+        "id": "book-072",
+        "title": "Moby Dick",
+        "language": "Português (PT)",
+        "author": "Herman Melville",
+        "pages": 656,
+        "price": 19.5,
+        "image": "image72.jpg",
+        "category": [
+            "Clássicos",
+            "Aventura"
+        ],
+        "tags": [
+            "Épico"
+        ],
+        "isBestSeller": false,
+        "isNew": false,
+        "discount": 0,
+        "description": "A perseguição obsessiva do capitão Ahab pela grande baleia branca num duelo metafísico contra a natureza."
+    }
+]

@@ -1,0 +1,150 @@
+.cart-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    display: none;
+    backdrop-filter: blur(3px);
+}
+
+.cart-overlay.active {
+    display: block;
+}
+
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 420px;
+    max-width: 90%;
+    height: 100vh;
+    background-color: #FFFFFF;
+    z-index: 2001;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.15);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s ease-in-out;
+    transform: translateX(100%);
+}
+
+.cart-sidebar.open {
+    transform: translateX(0);
+}
+
+.cart-header {
+    background-color: var(--bg-dark);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #FFFFFF;
+}
+
+.cart-header h2 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin: 0;
+    color: #FFFFFF;
+}
+
+.cart-header button.close-btn {
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    outline: none !important;
+    transition: transform 0.2s ease-in-out;
+}
+
+.cart-header button.close-btn svg {
+    color: #FFFFFF !important;
+    fill: #FFFFFF !important;
+    background: transparent !important;
+    background-color: transparent !important;
+    width: 32px !important;
+    height: 32px !important;
+    display: block !important;
+    transition: color 0.2s ease-in-out, fill 0.2s ease-in-out;
+}
+
+.cart-header button.close-btn:hover {
+    background: transparent !important;
+    background-color: transparent !important;
+    transform: scale(1.1);
+}
+
+.cart-header button.close-btn:hover svg {
+    color: var(--danger) !important;
+    fill: var(--danger) !important;
+    background: transparent !important;
+    background-color: transparent !important;
+}
+
+.cart-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+}
+
+.empty-msg {
+    text-align: center;
+    color: #777777;
+    margin-top: 3rem;
+    font-style: italic;
+}
+
+.cart-footer {
+    padding: 1.5rem;
+    background-color: #f9f9f9;
+    border-top: 1px solid #eeeeee;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #333333;
+}
+
+.total span:last-child {
+    font-size: 1.4rem;
+    color: var(--bg-dark);
+}
+
+.checkout-btn {
+    background-color: var(--bg-dark);
+    color: #FFFFFF;
+    border: none;
+    padding: 1rem 3.5rem;
+    width: fit-content;
+    align-self: center;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    margin-top: 1.5rem;
+    letter-spacing: 1px;
+    transition: opacity 0.2s, transform 0.2s;
+}
+
+.checkout-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    background-color: var(--bg-dark-alt);
+}

@@ -1,0 +1,208 @@
+.categories-section,
+.categories-results-view {
+    max-width: 1300px;
+    margin: 0 auto;
+    margin-bottom: 4rem;
+    padding: 2rem 32px 0;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.categories-main-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.categories-main-header h2 {
+    font-size: 2.5rem;
+    color: var(--text-primary);
+    font-weight: 700;
+    margin-bottom: 1rem;
+    padding-top: 2rem;
+}
+
+.categories-main-header p {
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    padding-bottom: 2.5rem;
+}
+
+.categories-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+}
+
+.category-card {
+    background: var(--bg-secondary);
+    border-radius: 12px;
+    padding: 2.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.3s ease;
+    border: 1px solid transparent;
+    box-shadow: 0 4px 20px rgba(15, 61, 62, 0.05);
+    cursor: pointer;
+}
+
+.category-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary);
+}
+
+.category-icon-circle {
+    width: 80px;
+    height: 80px;
+    background: rgba(107, 182, 201, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+}
+
+.category-card-name {
+    color: var(--text-primary);
+    font-size: 1.15rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+.results-header {
+    max-width: 1300px;
+    margin: 2rem auto 0;
+    padding: 0 32px;
+}
+
+.category-highlight {
+    color: var(--primary);
+    font-weight: 700;
+    border-bottom: 3px solid rgba(107, 182, 201, 0.3);
+}
+
+.books-grid-wrapper .book-list {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 2.5rem !important;
+    padding: 2rem 0 !important;
+    max-width: 100% !important;
+}
+
+.back-link {
+    color: var(--primary);
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+}
+
+/* Responsividade */
+
+@media (max-width: 1024px) {
+    .categories-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .books-grid-wrapper .book-list {
+        grid-template-columns: repeat(3, 1fr) !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .results-header {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        gap: 1.5rem !important;
+        padding: 0 16px !important;
+        margin-top: 1.5rem !important;
+        margin-bottom: 3.5rem !important;
+    }
+
+    .back-link {
+        margin-bottom: 0 !important;
+    }
+
+    .books-grid-wrapper .book-list {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 1.5rem !important;
+    }
+}
+
+@media (max-width: 550px) {
+    .categories-results-view {
+        margin-top: 10px;
+    }
+
+    .categories-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .category-card {
+        padding: 1.5rem 1rem;
+    }
+
+    .category-icon-circle {
+        width: 60px;
+        height: 60px;
+        font-size: 1.8rem;
+    }
+
+    .books-grid-wrapper .book-list {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        justify-items: center !important;
+        gap: 32px !important;
+        padding: 0 !important;
+    }
+
+    .books-grid-wrapper .book-list>div {
+        width: 100% !important;
+        max-width: 290px !important;
+        margin: 0 auto !important;
+    }
+
+    .categories-main-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .categories-main-header p {
+        font-size: 1rem;
+    }
+
+    .category-card-name {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .results-header h2 {
+        font-size: 1.4rem;
+        text-align: center;
+        margin: 0 !important;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

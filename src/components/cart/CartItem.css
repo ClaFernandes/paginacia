@@ -1,0 +1,121 @@
+.cart-item {
+    display: flex;
+    gap: 1.2rem;
+    padding: 1.2rem 0;
+    border-bottom: 1px solid var(--bg-secondary);
+    align-items: center;
+    position: relative;
+}
+
+.cart-item img {
+    width: 75px;
+    height: 110px;
+    object-fit: cover;
+    border-radius: 6px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.item-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding-right: 45px;
+}
+
+.item-info h4 {
+    font-size: 1.05rem;
+    color: var(--bg-dark);
+    line-height: 1.3;
+    margin: 0;
+    font-weight: 600;
+}
+
+.cart-price-area {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.item-price {
+    font-weight: 700;
+    color: var(--bg-dark);
+    font-size: 1.05rem;
+}
+
+.promo-badge {
+    background-color: var(--danger);
+    color: white;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 0.4rem;
+}
+
+.quantity-controls button:not(.remove-btn) {
+    background-color: var(--bg-primary);
+    border: 1px solid var(--bg-primary);
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--bg-dark);
+    transition: all 0.2s;
+}
+
+.quantity-controls button:not(.remove-btn) svg {
+    width: 18px;
+    height: 18px;
+}
+
+.quantity-controls button:not(.remove-btn):hover {
+    background-color: var(--bg-dark);
+    color: white;
+    border-color: var(--bg-dark);
+}
+
+.quantity-controls span {
+    font-weight: 700;
+    min-width: 24px;
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+.quantity-controls .remove-btn {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent !important;
+    border: none !important;
+    color: var(--danger) !important;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.quantity-controls .remove-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.quantity-controls .remove-btn:hover {
+    background-color: rgba(239, 68, 68, 0.08) !important;
+    color: var(--danger) !important;
+    transform: translateY(-50%) scale(1.15);
+}

@@ -1,0 +1,86 @@
+.notfound-container {
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 95%;
+    max-width: 750px;
+    margin: 4rem auto;
+    padding: 3.5rem;
+    background-color: var(--bg-secondary);
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.notfound-title {
+    font-size: 6rem;
+    font-weight: 800;
+    color: var(--bg-dark);
+    margin: 0;
+    line-height: 1;
+}
+
+.notfound-text {
+    font-size: 1.2rem;
+    color: var(--bg-dark);
+    margin: 1.5rem 0 3rem 0;
+    font-weight: 500;
+}
+
+.notfound-button {
+    background-color: var(--bg-dark);
+    color: var(--text-light) !important;
+    border: none;
+    padding: 1.2rem 3.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    text-decoration: none !important;
+    letter-spacing: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    transition: opacity 0.2s, transform 0.2s, background-color 0.2s;
+}
+
+.notfound-button svg {
+    width: 24px;
+    height: 24px;
+    transition: transform 0.2s ease;
+}
+
+.notfound-button:hover {
+    opacity: 0.9;
+    transform: scale(1.05);
+    background-color: var(--bg-dark-alt);
+}
+
+.notfound-button:hover svg {
+    transform: translateY(-2px);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .notfound-container {
+        padding: 2.5rem 1.5rem;
+        margin: 2rem auto;
+    }
+
+    .notfound-title {
+        font-size: 5rem;
+    }
+
+    .notfound-button {
+        width: 100%;
+        padding: 1rem 2rem;
+    }
+
+    .notfound-button svg {
+        width: 20px;
+        height: 20px;
+    }
+}

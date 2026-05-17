@@ -1,0 +1,132 @@
+:root {
+    --bg-primary: #EDEDED;
+    --bg-secondary: #FFFFFF;
+    --bg-dark: #0F3D3E;
+    --bg-dark-alt: #0A2B2C;
+    --text-primary: #0F3D3E;
+    --text-secondary: #6B7280;
+    --text-light: #FFFFFF;
+    --border: #D1D5DB;
+    --primary: #6BB6C9;
+    --primary-hover: #5AA1B3;
+    --accent: #F59E0B;
+    --danger: #EF4444;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    min-height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+    color: var(--text-primary);
+    background-color: var(--bg-primary);
+    line-height: 1.5;
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+}
+
+.App {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    width: 95%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Links */
+a,
+a:visited,
+a:hover,
+a:active {
+    text-decoration: none !important;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Botões */
+.btn {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Containers */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Inputs, Forms */
+input,
+textarea,
+select {
+    border: 1px solid var(--border);
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+/* Images */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Utilities */
+.text-center {
+    text-align: center;
+}
+
+.flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-bottom {
+    width: 100%;
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    font-size: 0.85em;
+    border-top: 1px solid #1E5A5C;
+    background-color: var(--bg-dark-alt);
+    color: #FFFFFF;
+}
+
+/* Reponsividade */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+        padding-top: 220px;
+    }
+
+    .container {
+        width: 100%;
+    }
+}
