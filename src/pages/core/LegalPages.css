@@ -1,0 +1,130 @@
+.legal-page {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1.5rem 1.5rem 4rem 1.5rem;
+    /* Padding do topo reduzido para alinhar de forma elegante */
+}
+
+/* --- FIX: REESCREVE O WRAPPER DO INDEX.CSS PARA ALINHAR COM AS SECÇÕES --- */
+.legal-page .back-home-wrapper {
+    max-width: 900px !important;
+    /* Restringe aos 900px do resto da página */
+    width: 100% !important;
+    margin: 0 auto 2rem auto !important;
+    /* Centra a caixa invisível por cima do conteúdo */
+    padding: 0 !important;
+    /* Zera o padding lateral para alinhar na linha esquerda do bloco */
+    box-sizing: border-box !important;
+}
+
+/* Alinhamento idêntico ao .about-hero */
+.legal-hero {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.legal-hero h1 {
+    font-size: 3rem;
+    color: var(--bg-dark);
+    font-weight: 750;
+    margin-bottom: 0.5rem;
+}
+
+.legal-updated {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+/* Blocos de secção idênticos ao .about-section */
+.legal-section {
+    background: var(--bg-secondary);
+    padding: 3rem;
+    border-radius: 1.5rem;
+    border: 1px solid var(--border);
+    margin-bottom: 2.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.legal-section h2 {
+    font-size: 1.5rem;
+    color: var(--bg-dark);
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Linha decorativa idêntica à do About */
+.legal-section h2::after {
+    content: "";
+    width: 40px;
+    height: 4px;
+    background: var(--primary);
+    border-radius: 2px;
+    margin-top: 8px;
+}
+
+.legal-section p {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-bottom: 1.2rem;
+    line-height: 1.6;
+}
+
+/* -------------------------------------------------------------------------
+   LISTAS EM LINHA ÚNICA (UM ITEM POR LINHA)
+   ------------------------------------------------------------------------- */
+.legal-section ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.legal-section li {
+    width: 100%;
+    font-size: 1rem;
+    color: var(--text-primary);
+    padding: 0.8rem 1.2rem;
+    background: rgba(107, 182, 201, 0.08);
+    border-radius: 0.8rem;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s ease;
+}
+
+.legal-section li:hover {
+    transform: translateX(5px);
+}
+
+/* Marcador customizado com bola azul do About */
+.legal-section li::before {
+    content: "•";
+    color: var(--primary);
+    font-weight: bold;
+    margin-right: 12px;
+    font-size: 1.5rem;
+}
+
+/* Responsividade idêntica */
+@media (max-width: 768px) {
+    .legal-page {
+        padding: 2rem 1rem 2rem 1rem;
+    }
+
+    .legal-page .back-home-wrapper {
+        justify-content: center !important;
+        margin-bottom: 1.5rem !important;
+    }
+
+    .legal-section {
+        padding: 2rem;
+    }
+
+    .legal-hero h1 {
+        font-size: 2.2rem;
+    }
+}

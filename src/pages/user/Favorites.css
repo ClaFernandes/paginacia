@@ -1,0 +1,36 @@
+.favorites-container {
+    min-height: 70vh;
+    padding-bottom: 40px;
+}
+
+.favorites-title {
+    font-size: 2rem;
+    margin: 2rem 0;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.icon-title-favorites {
+    color: var(--danger);
+}
+
+.favorites-empty {
+    text-align: center;
+    padding: 4rem 1rem;
+    background: white;
+    border-radius: 1rem;
+    border: 1px dashed var(--border);
+}
+
+.icon-empty-favorites {
+    font-size: 4rem;
+    color: var(--primary);
+    margin-bottom: 1rem;
+}
+
+.favorites-list-wrapper {
+    display: grid;
+    gap: 20px;
+}

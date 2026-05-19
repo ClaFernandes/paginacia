@@ -6,6 +6,7 @@ import {
   useMemo,
 } from "react";
 import { getBookById } from "../services/booksService";
+import { toast } from "react-toastify";
 
 // Criação do contexto para o carrinho
 const CartContext = createContext();
@@ -89,6 +90,7 @@ export const CartProvider = ({ children }) => {
       };
 
       dispatch({ type: "ADD", payload: bookWithDiscountedPrice });
+      toast.success(`${book.title} adicionado ao carrinho!`);
     }
   }
 

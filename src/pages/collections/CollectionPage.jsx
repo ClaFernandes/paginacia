@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import BookList from "../../components/book/BookList";
 import Filters from "../../components/ui/Filters";
 import Pagination from "../../components/ui/Pagination";
+import { FaChevronLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import "./CollectionPage.css";
 
 const CollectionPage = ({ title, fetchFunction }) => {
@@ -97,6 +99,13 @@ const CollectionPage = ({ title, fetchFunction }) => {
   return (
     <main className="content">
       <header className="collection-header">
+        {/* Botão para voltar à página inicial */}
+        <div className="back-home-wrapper">
+          <Link to="/" className="btn-back-home">
+            <FaChevronLeft /> Voltar à Página Inicial
+          </Link>
+        </div>
+
         <h1 className="main-title">{title}</h1>
         <Filters
           onFilterChange={handleFilterChange}

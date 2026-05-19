@@ -1,8 +1,20 @@
 import "./Footer.css";
 import { Link } from "react-router-dom";
 import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
+import { useAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
 
 function Footer() {
+  const { isLoggedIn } = useAuth();
+
+  // Submissão newsletter
+  const handleNewsletterSubmit = (e) => {
+    e.preventDefault();
+
+    toast.success("Obrigado! Subscreveu a nossa newsletter com sucesso.");
+    e.target.reset();
+  };
+
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -29,7 +41,12 @@ function Footer() {
               <Link to="/favorites">Favoritos</Link>
             </li>
             <li>
-              <Link to="/auth">Login / Registo</Link>
+              {/* Se estiver logado, o link muda para Perfil, caso contrário mantém Login */}
+              {isLoggedIn ? (
+                <Link to="/profile">A Minha Conta</Link>
+              ) : (
+                <Link to="/auth">Iniciar Sessão / Criar Conta</Link>
+              )}
             </li>
             <li>
               <Link to="/about">Sobre Nós</Link>
@@ -40,7 +57,6 @@ function Footer() {
         {/* Coluna 3 */}
         <div className="footer-column">
           <h3>Redes Sociais</h3>
-          {/* ainda sem links reais */}
           <div className="social-icons">
             <a href="#" onClick={(e) => e.preventDefault()}>
               <FaInstagram />
@@ -54,19 +70,14 @@ function Footer() {
           </div>
 
           <h3>Newsletter</h3>
-          {/* ainda sem funcionalidade */}
-          <form
-            className="newsletter-form"
-            onSubmit={(e) => e.preventDefault()}
-          >
+          <form className="newsletter-form" onSubmit={handleNewsletterSubmit}>
             <input type="email" placeholder="Seu e-mail" required />
-
             <button type="submit">Subscrever</button>
           </form>
         </div>
       </div>
 
-      {/* Bottom - links ainda sem funcionalidade*/}
+      {/* Bottom */}
       <div className="footer-bottom">
         © 2026 Página & Cia. Todos os direitos reservados, Lisboa, Portugal.{" "}
         <Link to="/terms">Termos de Uso</Link> |{" "}

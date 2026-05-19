@@ -1,0 +1,84 @@
+/* Container Principal */
+.auth-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 85vh;
+    padding: 20px;
+    background-color: #f4f7f6;
+}
+
+.auth-split-container {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    width: 100%;
+    max-width: 500px;
+    text-align: center;
+}
+
+/* Inputs e Formulário */
+.auth-form-side input {
+    width: 100%;
+    padding: 0.9rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 0.8rem;
+    font-size: 1rem;
+    box-sizing: border-box;
+    /* Garante que o padding não alarga o input */
+}
+
+.pass-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.pass-input button {
+    position: absolute;
+    right: 15px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #888;
+}
+
+/* Botões */
+.btn-main {
+    width: 100%;
+    padding: 1rem;
+    background-color: #0f4c5c;
+    color: white;
+    border: none;
+    border-radius: 0.8rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.btn-secondary {
+    width: 100%;
+    padding: 1rem;
+    background-color: transparent;
+    border: 1px solid #0f4c5c;
+    color: #0f4c5c;
+    border-radius: 0.8rem;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.error {
+    color: #d9534f;
+    font-size: 0.85rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .auth-split-container {
+        padding: 1.5rem;
+    }
+}

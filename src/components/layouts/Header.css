@@ -157,6 +157,98 @@
     z-index: 1001;
 }
 
+.header-avatar-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.avatar-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.popover-content {
+    position: absolute;
+    top: 50px;
+    right: 0;
+    width: 280px;
+    background: white;
+    border: 1px solid #eee;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    z-index: 1000;
+    border-radius: 12px;
+    text-align: center;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.auth-prompt h3 {
+    margin: 0 0 10px 0;
+    color: var(--text-primary);
+}
+
+.auth-prompt p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+.auth-prompt button {
+    display: block;
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.auth-prompt button:first-of-type {
+    background-color: var(--primary);
+    color: white;
+}
+
+.auth-prompt button:last-of-type {
+    background-color: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+}
+
+.user-greeting {
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.user-menu button {
+    display: block;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 8px 0;
+    cursor: pointer;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+.user-menu button:hover {
+    color: var(--primary);
+}
+
+.user-menu button:last-child {
+    color: var(--danger);
+    font-weight: 700;
+    margin-top: 5px;
+    border-top: 1px solid #f0f0f0;
+}
+
 /*  Responsividade */
 @media (max-width: 768px) {
     .header {
