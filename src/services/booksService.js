@@ -16,7 +16,7 @@ export const getBestSellers = () => {
     return booksData.filter(book => book.isBestSeller);
 };
 
-// Filtra novidade
+// Filtra laançamentos
 export const getNewBooks = () => {
     return booksData.filter(book => book.isNew);
 };

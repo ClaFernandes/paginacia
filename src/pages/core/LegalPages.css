@@ -3,22 +3,13 @@
     max-width: 900px;
     margin: 0 auto;
     padding: 1.5rem 1.5rem 4rem 1.5rem;
-    /* Padding do topo reduzido para alinhar de forma elegante */
 }
 
-/* --- FIX: REESCREVE O WRAPPER DO INDEX.CSS PARA ALINHAR COM AS SECÇÕES --- */
-.legal-page .back-home-wrapper {
-    max-width: 900px !important;
-    /* Restringe aos 900px do resto da página */
-    width: 100% !important;
-    margin: 0 auto 2rem auto !important;
-    /* Centra a caixa invisível por cima do conteúdo */
-    padding: 0 !important;
-    /* Zera o padding lateral para alinhar na linha esquerda do bloco */
-    box-sizing: border-box !important;
+.back-home-container {
+    margin-bottom: 1rem;
+    font-weight: 600;
 }
 
-/* Alinhamento idêntico ao .about-hero */
 .legal-hero {
     text-align: center;
     margin-bottom: 4rem;
@@ -33,11 +24,10 @@
 
 .legal-updated {
     color: var(--text-secondary);
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
 }
 
-/* Blocos de secção idênticos ao .about-section */
 .legal-section {
     background: var(--bg-secondary);
     padding: 3rem;
@@ -55,7 +45,6 @@
     flex-direction: column;
 }
 
-/* Linha decorativa idêntica à do About */
 .legal-section h2::after {
     content: "";
     width: 40px;
@@ -70,11 +59,9 @@
     color: var(--text-secondary);
     margin-bottom: 1.2rem;
     line-height: 1.6;
+    text-align: justify;
 }
 
-/* -------------------------------------------------------------------------
-   LISTAS EM LINHA ÚNICA (UM ITEM POR LINHA)
-   ------------------------------------------------------------------------- */
 .legal-section ul {
     list-style: none;
     padding: 0;
@@ -100,7 +87,6 @@
     transform: translateX(5px);
 }
 
-/* Marcador customizado com bola azul do About */
 .legal-section li::before {
     content: "•";
     color: var(--primary);
@@ -109,7 +95,7 @@
     font-size: 1.5rem;
 }
 
-/* Responsividade idêntica */
+/* Responsividade */
 @media (max-width: 768px) {
     .legal-page {
         padding: 2rem 1rem 2rem 1rem;

@@ -4,6 +4,11 @@
     max-width: 1300px;
 }
 
+.back-home-container {
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
 .main-title {
     font-size: 2rem;
     color: var(--text-primary);

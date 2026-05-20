@@ -9,7 +9,7 @@ function Home() {
   const [books] = useState(() => getAllBooks() || []);
   const { searchTerm } = useOutletContext() || { searchTerm: "" };
 
-  // Estados para filtros que vêm do componente Filters
+  // Filtros que vêm do componente Filters
   const [activeFilters, setActiveFilters] = useState({
     priceRange: 200,
     sortOrder: "",
@@ -52,7 +52,7 @@ function Home() {
       return currentPrice <= activeFilters.priceRange;
     });
 
-    // Filtro ordenação (A-Z, Preço, etc)
+    // Filtro ordenação
     if (activeFilters.sortOrder === "name-asc") {
       result.sort((a, b) => a.title.localeCompare(b.title));
     } else if (activeFilters.sortOrder === "name-desc") {
@@ -78,14 +78,12 @@ function Home() {
 
   // Cálculos paginação
   const totalPages = Math.ceil(finalBooks.length / booksPerPage);
-
   const validatedPage = currentPage > totalPages ? 1 : currentPage;
-
   const indexOfLastBook = validatedPage * booksPerPage;
   const indexOfFirstBook = indexOfLastBook - booksPerPage;
   const currentBooks = finalBooks.slice(indexOfFirstBook, indexOfLastBook);
 
-  // Funções para Filters (fazem o reset do estado da página no momento do clique)
+  // Funções para Filters
   const handleFilterChange = (newFilters) => {
     setActiveFilters(newFilters);
     setCurrentPage(1);

@@ -1,28 +1,48 @@
+import { useState, useEffect } from "react";
 import { useFavorites } from "../../context/FavoritesContext";
-// Importa o hook para aceder aos livros favoritados
 import BookList from "../../components/book/BookList";
-// Reutiliza a listagem padrão de livros da app
-import { Link } from "react-router-dom"; // Importa o Link para navegação interna
-import { FaHeartBroken, FaHeart } from "react-icons/fa";
-// Ícones importados do react-icons
+import Pagination from "../../components/ui/Pagination";
+import { Link } from "react-router-dom";
+import { FaHeartBroken, FaChevronLeft } from "react-icons/fa";
 import "./Favorites.css";
 
 function Favorites() {
-    // Extrai o array de favoritos guardado centralizadamente no contexto
+    // Extrai o array de favoritos guardado no contexto
     const { favorites } = useFavorites();
+
+    // Estados de paginação
+    const [currentPage, setCurrentPage] = useState(1);
+    const [booksPerPage] = useState(8);
+
+    // Cálculos de paginação
+    const totalPages = Math.ceil(favorites.length / booksPerPage);
+    const indexOfLastBook = currentPage * booksPerPage;
+    const indexOfFirstBook = indexOfLastBook - booksPerPage;
+    const currentBooks = favorites.slice(indexOfFirstBook, indexOfLastBook);
+
+    // Efeito para resetar a página atual caso o utilizador remova livros 
+    useEffect(() => {
+        if (currentPage > totalPages && totalPages > 0) {
+            setCurrentPage(totalPages);
+        }
+    }, [favorites, currentPage, totalPages]);
 
     return (
         <div className="favorites-container">
-            {/* Wrapper que mantém a consistência do alinhamento do botão com as outras páginas */}
-            <div className="back-home-wrapper">
-                <Link to="/" className="btn-back-home">
-                    ← Voltar para a Home
+
+            <div className="back-home-container">
+                <Link to="/" >
+                    <FaChevronLeft /> Voltar à Página Inicial
                 </Link>
             </div>
 
-            {/* CONDICIONAL: Se o array estiver vazio, renderiza o ecrã de aviso */}
+            {favorites.length > 0 && (
+                <h1 className="favorites-title">
+                    Os Meus Livros Favoritos
+                </h1>
+            )}
+
             {favorites.length === 0 ? (
-                /* --- ESTADO VAZIO: Utilizador não tem livros na lista --- */
                 <div className="favorites-empty">
                     <FaHeartBroken className="icon-empty-favorites" />
                     <h2 className="empty-title">A sua lista de favoritos está vazia.</h2>
@@ -31,19 +51,15 @@ function Favorites() {
                     </p>
                 </div>
             ) : (
-                /* --- ESTADO COM ITENS: Utilizador tem livros guardados --- */
-                <>
-                    {/* Título da página com o ícone de coração do react-icons */}
-                    <h1 className="favorites-title">
-                        <FaHeart className="icon-title-favorites" />
-                        Os Meus Livros Favoritos
-                    </h1>
+                <div className="favorites-list-wrapper">
+                    <BookList books={currentBooks} />
 
-                    {/* Reutiliza o componente BookList global passando os favoritos */}
-                    <div className="favorites-list-wrapper">
-                        <BookList books={favorites} />
-                    </div>
-                </>
+                    <Pagination
+                        currentPage={currentPage}
+                        totalPages={totalPages}
+                        setCurrentPage={setCurrentPage}
+                    />
+                </div>
             )}
         </div>
     );

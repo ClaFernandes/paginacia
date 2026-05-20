@@ -13,7 +13,7 @@
 }
 
 .categories-main-header h2 {
-    font-size: 2.5rem;
+    font-size: 3rem;
     color: var(--text-primary);
     font-weight: 700;
     margin-bottom: 1rem;
@@ -21,9 +21,9 @@
 }
 
 .categories-main-header p {
-    color: var(--text-primary);
+    color: var(--text-secondary);
     font-size: 1.2rem;
-    max-width: 600px;
+    font-weight: 600;
     margin: 0 auto;
     padding-bottom: 2.5rem;
 }

@@ -14,9 +14,9 @@ import {
   MdOutlineBusinessCenter,
   MdOutlineFavoriteBorder,
   MdOutlineComputer,
-  MdArrowBack,
   MdArrowForward,
 } from "react-icons/md";
+import { FaChevronLeft } from "react-icons/fa";
 
 import booksData from "../../data/books.json";
 import BookList from "../../components/book/BookList";
@@ -24,7 +24,7 @@ import Filters from "../../components/ui/Filters";
 import Pagination from "../../components/ui/Pagination";
 import "./Categories.css";
 
-// Definição das Categorias com Slugs e Ícones
+// Definição das Categorias 
 const CATEGORIES_DATA = [
   {
     id: 1,
@@ -71,6 +71,7 @@ const CATEGORIES_DATA = [
 ];
 
 const Categories = () => {
+  // Obtém o slug da categoria da URL
   const { slug } = useParams();
 
   // Estados de paginação
@@ -79,7 +80,7 @@ const Categories = () => {
 
   // Declara o estado dos filtros
   const [activeFilters, setActiveFilters] = useState({
-    priceRange: 500,
+    priceRange: 200,
     sortOrder: "",
   });
 
@@ -107,17 +108,17 @@ const Categories = () => {
     window.scrollTo(0, 0);
   }, [slug, currentPage]);
 
-  // Função para limpar acentos e espaços para comparação
+  // Limpa acentos e espaços para comparação
   const normalize = (str) =>
     str
       ? str
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase()
-          .trim()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .toLowerCase()
+        .trim()
       : "";
 
-  // Lógica de Filtro dos Livros baseado no Slug da URL
+  // Filtro dos Livros baseado no Slug da URL
   const getFilteredBooks = () => {
     if (!slug) return [];
 
@@ -145,14 +146,14 @@ const Categories = () => {
       });
     });
 
-    // Aplica Filtro de Faixa de Preço
+    // Filtro de Faixa de Preço
     result = result.filter((book) => {
       const currentPrice =
         book.discount > 0 ? book.price * (1 - book.discount / 100) : book.price;
       return currentPrice <= activeFilters.priceRange;
     });
 
-    // Aplica Ordenação
+    // Ordenação
     if (activeFilters.sortOrder === "name-asc") {
       result.sort((a, b) => a.title.localeCompare(b.title));
     } else if (activeFilters.sortOrder === "name-desc") {
@@ -176,7 +177,7 @@ const Categories = () => {
 
   const allFilteredBooks = getFilteredBooks();
 
-  // Cálculos paginação protegida
+  // Cálculos paginação
   const totalPages = Math.ceil(allFilteredBooks.length / booksPerPage);
   const validatedPage = currentPage > totalPages ? 1 : currentPage;
 
@@ -206,7 +207,7 @@ const Categories = () => {
       <>
         <header className="results-header">
           <Link to="/categories" className="back-link">
-            <MdArrowBack /> Voltar às Categorias
+            <FaChevronLeft /> Voltar às Categorias
           </Link>
           <h2>
             Explore a coleção de{" "}
@@ -254,7 +255,7 @@ const Categories = () => {
     );
   }
 
-  // Visualização principal (Grade de todas as categorias)
+  // Grade de todas as categorias
   return (
     <section className="categories-section">
       <div className="categories-main-header">

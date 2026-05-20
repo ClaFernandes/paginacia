@@ -1,0 +1,246 @@
+/* Container Principal */
+.checkout-container-premium {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    min-height: 80vh;
+}
+
+/* Grid de Layout (Conteúdo Principal + Sidebar) */
+.checkout-layout-grid {
+    display: grid;
+    grid-template-columns: 1fr 380px;
+    gap: 2rem;
+}
+
+/* Barra de Passos */
+.checkout-steps-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 3rem;
+    gap: 1rem;
+}
+
+.step-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #aaa;
+}
+
+.step-item.active {
+    color: #004d40;
+    font-weight: bold;
+}
+
+.step-number {
+    background: #eee;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.step-item.active .step-number {
+    background: #004d40;
+    color: #fff;
+}
+
+.step-line {
+    height: 2px;
+    width: 50px;
+    background: #eee;
+}
+
+/* Cartões de Conteúdo */
+.checkout-card-step {
+    background: #fff;
+    padding: 2.5rem;
+    border-radius: 12px;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.checkout-card-step h2 {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+}
+
+/* Formulário de Edição */
+.edit-address-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-top: 1.5rem;
+}
+
+.checkout-input-text {
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    width: 100%;
+}
+
+.btn-save {
+    grid-column: span 2;
+    padding: 0.8rem;
+    background: #004d40;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Visualização de Morada */
+.address-preview-box {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    border: 1px dashed #ccc;
+    border-radius: 8px;
+}
+
+.edit-link {
+    background: none;
+    border: none;
+    color: #004d40;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+}
+
+/* Opções de Pagamento */
+.payment-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 1.5rem 0;
+}
+
+.payment-selector-card {
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.payment-selector-card.selected {
+    border-color: #004d40;
+    background: #f0fdf9;
+}
+
+/* Resumo Lateral */
+.sidebar-sticky-card {
+    position: sticky;
+    top: 20px;
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 12px;
+    border: 1px solid #eee;
+}
+
+.sidebar-books-scroller {
+    max-height: 400px;
+    overflow-y: auto;
+    margin: 1rem 0;
+}
+
+.sidebar-book-item {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+}
+
+.mini-cover {
+    width: 60px;
+    height: 85px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.mini-book-details {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.mini-title {
+    font-weight: bold;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.mini-qty,
+.mini-price {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Botões de Ação */
+.step-actions-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #eee;
+}
+
+.btn-step-next {
+    background: #004d40;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-back-home,
+.btn-step-back {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.btn-confirm-order-premium {
+    background: #004d40;
+    color: white;
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 1rem;
+}
+
+/* Responsividade */
+@media (max-width: 900px) {
+    .checkout-layout-grid {
+        grid-template-columns: 1fr;
+    }
+}

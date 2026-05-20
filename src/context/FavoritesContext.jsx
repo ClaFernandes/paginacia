@@ -4,32 +4,31 @@ import { toast } from "react-toastify";
 const FavoritesContext = createContext();
 
 export function FavoritesProvider({ children }) {
-  // Inicializa o estado diretamente a partir do localStorage
   const [favorites, setFavorites] = useState(() => {
     const saved = localStorage.getItem("favorites");
     return saved ? JSON.parse(saved) : [];
   });
 
-  // Função que verifica se o ID já existe nos favoritos
+  // Verifica se o ID já existe nos favoritos
   const isFavorite = (id) => favorites.some((item) => item.id === id);
 
-  // Função para adicionar (mantém o objeto do livro)
+  // Adicionar aos favoritos
   const addFavorite = (book) => {
     const updatedFavorites = [...favorites, book];
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    toast.success(`"${book.title}" guardado nos favoritos! ❤️`);
+    toast(`"${book.title}" guardado nos favoritos!`);
   };
 
-  // Função para remover (usa apenas o ID)
+  // Remover dos favoritos
   const removeFavorite = (id) => {
     const updatedFavorites = favorites.filter((fav) => fav.id !== id);
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    toast.info("Livro removido dos favoritos.");
+    toast.warn("Livro removido dos favoritos.");
   };
 
-  // Mantivemos o toggleFavorite caso queira usar em outros locais
+  // Alternar estado de favorito
   const toggleFavorite = (book) => {
     if (isFavorite(book.id)) {
       removeFavorite(book.id);

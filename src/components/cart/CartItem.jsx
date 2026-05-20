@@ -1,12 +1,12 @@
-import "./CartItem.css";
-import { MdAdd, MdRemove, MdDeleteOutline } from "react-icons/md";
 import { useCart } from "../../context/CartContext";
+import { MdAdd, MdRemove, MdDeleteOutline } from "react-icons/md";
+import "./CartItem.css";
 
 function CartItem({ item }) {
   // Extrai dispatch do contexto para evitar erros de props indefinidas
   const { dispatch } = useCart();
 
-  // Caminho da imagem
+  // Imagem
   const getImageUrl = (imageName) => {
     return new URL(`../../assets/images/${imageName}`, import.meta.url).href;
   };
@@ -18,13 +18,13 @@ function CartItem({ item }) {
       <div className="item-info">
         <h4>{item.title}</h4>
 
-        {/* Mostra o preço unitário com desconto no CartContext */}
+        {/* Preço unitário com desconto */}
         <div className="cart-price-area">
           <span className="item-price">{item.price.toFixed(2)}€</span>
-          {/* badge se houver desconto original no livro */}
           {item.discount > 0 && <span className="promo-badge">Promo</span>}
         </div>
 
+        {/* Botão diminuir quantidade, até remover */}
         <div className="quantity-controls">
           <button onClick={() => dispatch({ type: "DECREASE", id: item.id })}>
             <MdRemove />
@@ -32,10 +32,12 @@ function CartItem({ item }) {
 
           <span>{item.quantity}</span>
 
+          {/* Botão aumentar quantidade */}
           <button onClick={() => dispatch({ type: "INCREASE", id: item.id })}>
             <MdAdd />
           </button>
 
+          {/* Botão remover */}
           <button
             className="remove-btn"
             onClick={() => dispatch({ type: "REMOVE", id: item.id })}

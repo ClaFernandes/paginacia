@@ -1,16 +1,19 @@
-import "./Header.css";
 import logoImage from "../../assets/logo.png";
+
 import { Link, useNavigate } from "react-router-dom";
+
 import { useState, useRef, useEffect } from "react";
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
+
 import { MdOutlineShoppingCart, MdSearch, MdMenu, MdClose } from "react-icons/md";
 import { RxAvatar } from "react-icons/rx";
 import { GrFavorite } from "react-icons/gr";
 
+import "./Header.css";
+
 const Header = ({ onOpenCart, searchTerm, setSearchTerm }) => {
-  // Estados locais
-  // Menu hambúrguer para telemóveis 
+  // Menu hambúrguer mobile 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Caixinha flutuante do perfil 

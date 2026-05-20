@@ -1,8 +1,8 @@
-import "./CartSidebar.css";
-import { MdClose } from "react-icons/md";
 import CartItem from "./CartItem";
 import { useCart } from "../../context/CartContext";
 import { useNavigate } from "react-router-dom";
+import { MdClose } from "react-icons/md";
+import "./CartSidebar.css";
 
 const CartSidebar = ({ isOpen, onClose }) => {
   const { cartItems, dispatch } = useCart();
@@ -10,14 +10,14 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
   const safeCart = cartItems || [];
 
-  // Cálculo do total, considerando desconto se aplicável
+  // Cálculo do total, considerando desconto se houver
   const totalValue = cartItems.reduce((acc, item) => {
     const price = item.price || 0;
     const qty = item.quantity || 1;
     return acc + price * qty;
   }, 0);
 
-  // Redirecionamento para checkout ao clicar no botão
+  // Redirecionamento para checkout e fechamento do sidebar
   const handleCheckoutRedirect = () => {
     onClose();
     navigate("/checkout");
@@ -25,7 +25,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
   return (
     <>
-      {/* Overlay - fecha sidebar ao clicar fora */}
+      {/* Overlay */}
       <div
         className={`cart-overlay ${isOpen ? "active" : ""}`}
         onClick={onClose}
@@ -33,6 +33,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
       {/* Sidebar */}
       <aside className={`cart-sidebar ${isOpen ? "open" : ""}`}>
+
         {/* Header */}
         <div className="cart-header">
           <h2>Carrinho</h2>

@@ -22,7 +22,7 @@ function AppRoutes() {
 
   return (
     <Routes>
-      {/* AppLayout envolve todas as páginas, mantendo Header e Footer constantes */}
+      {/* AppLayout envolve todas as páginas, com Header e Footer constantes */}
       <Route path="/" element={<AppLayout isLoggedIn={isLoggedIn} />}>
         {/* Rota Padrão */}
         <Route index element={<Home />} />

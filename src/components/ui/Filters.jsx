@@ -3,13 +3,13 @@ import { MdFilterList, MdClose } from "react-icons/md";
 import "./Filters.css";
 
 const Filters = ({ onFilterChange, onClear }) => {
-  // Estado que controla sidebar
+  // Estado sidebar
   const [isOpen, setIsOpen] = useState(false);
 
-  // Estado local para o slider de preço máximo
+  // Estado slider de preço máximo
   const [priceRange, setPriceRange] = useState(200);
 
-  // Estados independentes para seletores
+  // Estados para seletores
   const [alphabeticalSort, setAlphabeticalSort] = useState("");
   const [priceSort, setPriceSort] = useState("");
 
@@ -18,23 +18,23 @@ const Filters = ({ onFilterChange, onClear }) => {
 
   // Agrupa as escolhas locais e envia o resultado consolidado para o componente pai
   const handleApply = () => {
-    // Usa a ordenação alfabética ou a de preço (uma anula a outra)
+    // Ordenação alfabética ou por preço (uma anula a outra)
     const currentSortOrder = alphabeticalSort || priceSort || "";
 
     onFilterChange({ priceRange, sortOrder: currentSortOrder });
     setIsOpen(false); // Fecha a sidebar após aplicar
   };
 
-  // Restaura as definições originais de fábrica do componente de filtros
+  // Restaura definições originais e notifica o pai para limpar os filtros
   const handleReset = () => {
     setPriceRange(200);
     setAlphabeticalSort("");
     setPriceSort("");
-    onClear(); // Avisa o pai que os filtros foram limpos
-    setIsOpen(false); // Fecha a sidebar
+    onClear();
+    setIsOpen(false);
   };
 
-  // Garante que ao escolher ordenação alfabética, o seletor por preço é limpo
+  // Ao escolher ordenação alfabética, seletor por preço é limpo
   const handleAlphabeticalChange = (value) => {
     setAlphabeticalSort(value);
     if (value !== "") {
@@ -42,7 +42,7 @@ const Filters = ({ onFilterChange, onClear }) => {
     }
   };
 
-  // Garante que ao escolher ordenação por preço, o seletor alfabético é limpo
+  // Ao escolher ordenação por preço, seletor alfabético é limpo
   const handlePriceSortChange = (value) => {
     setPriceSort(value);
     if (value !== "") {
@@ -52,7 +52,7 @@ const Filters = ({ onFilterChange, onClear }) => {
 
   return (
     <div className="filters-wrapper">
-      {/* Botão de disparo que abre a barra lateral de filtros */}
+      {/* Botão para abrir barra lateral de filtros */}
       <button className="filter-trigger-btn" onClick={() => setIsOpen(true)}>
         <MdFilterList size={20} />
         <span>Filtros</span>
@@ -60,7 +60,7 @@ const Filters = ({ onFilterChange, onClear }) => {
 
       {/* Contentor do Sidebar */}
       <aside className={`filters-sidebar ${isOpen ? "open" : ""}`}>
-        {/* Cabeçalho com o Título e o Botão X */}
+        {/* Cabeçalho com o Título e Botão X */}
         <div className="sidebar-header">
           <h3>Filtros</h3>
           <button
@@ -72,9 +72,10 @@ const Filters = ({ onFilterChange, onClear }) => {
           </button>
         </div>
 
-        {/* Corpo da Sidebar */}
+        {/* Corpo Sidebar */}
         <div className="sidebar-body">
-          {/* Seção 1: Ordem Alfabética */}
+
+          {/* Ordem Alfabética */}
           <div className="filter-section">
             <label className="filter-label">Ordem Alfabética</label>
             <select
@@ -88,7 +89,7 @@ const Filters = ({ onFilterChange, onClear }) => {
             </select>
           </div>
 
-          {/* Seção 2: Ordenação por Faixas de Preço */}
+          {/* Ordenação por Faixas de Preço */}
           <div className="filter-section">
             <label className="filter-label">Ordem por Preço</label>
             <select
@@ -129,7 +130,7 @@ const Filters = ({ onFilterChange, onClear }) => {
           </div>
         </div>
 
-        {/* Rodapé fixo com os botões de ação estruturados */}
+        {/* Rodapé fixo */}
         <div className="sidebar-footer">
           <button className="btn-apply-filters" onClick={handleApply}>
             Aplicar Filtros
@@ -140,7 +141,7 @@ const Filters = ({ onFilterChange, onClear }) => {
         </div>
       </aside>
 
-      {/* Overlay quando a barra expande */}
+      {/* Overlay */}
       {isOpen && (
         <div className="sidebar-overlay" onClick={() => setIsOpen(false)}></div>
       )}

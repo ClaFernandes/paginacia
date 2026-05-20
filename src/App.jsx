@@ -1,25 +1,18 @@
 import AppRoutes from "./routes/AppRoutes";
 import { AuthProvider } from "./context/AuthContext";
 import { FavoritesProvider } from "./context/FavoritesContext";
-import { CartProvider } from "./context/CartContext"; // Assumindo que tens este provider
+import { CartProvider } from "./context/CartContext";
 
-// IMPORTAÇÕES DO REACT TOASTIFY
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // OBRIGATÓRIO: Importa o estilo padrão dos toasts
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
     <AuthProvider>
       <CartProvider>
         <FavoritesProvider>
-
-          {/* As tuas rotas normais da aplicação */}
           <AppRoutes />
-
-          {/* CONTENTOR GLOBAL DE TOASTS: Fica à escuta de disparos em qualquer página */}
-          {/* O autoClose={3000} faz o toast sumir sozinho após 3 segundos */}
-          <ToastContainer position="top-right" autoClose={3000} theme="colored" />
-
+          <ToastContainer position="top-right" autoClose={1000} />
         </FavoritesProvider>
       </CartProvider>
     </AuthProvider>

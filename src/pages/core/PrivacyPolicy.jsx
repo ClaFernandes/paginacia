@@ -5,7 +5,7 @@ import "./LegalPages.css";
 function PrivacyPolicy() {
     return (
         <section className="legal-page">
-            <div className="back-home-wrapper">
+            <div className="back-home-container">
                 <Link to="/" className="btn-back-home">
                     <FaChevronLeft /> Voltar à Página Inicial
                 </Link>

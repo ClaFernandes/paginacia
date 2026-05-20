@@ -7,10 +7,10 @@ import Footer from "./Footer";
 import CartSidebar from "../cart/CartSidebar";
 
 function AppLayout() {
-  // Estado local para saber se sidebar do carrinho está visível ou oculta
+  // Estado para saber se sidebar do carrinho está visível ou oculta
   const [isCartOpen, setIsCartOpen] = useState(false);
 
-  // Estado global de pesquisa 
+  // Estado de pesquisa 
   const [searchTerm, setSearchTerm] = useState("");
 
   return (

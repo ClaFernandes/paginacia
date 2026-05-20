@@ -1,17 +1,9 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useReducer,
-  useMemo,
-} from "react";
+import { createContext, useContext, useEffect, useReducer, useMemo } from "react";
 import { getBookById } from "../services/booksService";
 import { toast } from "react-toastify";
-
-// Criação do contexto para o carrinho
 const CartContext = createContext();
 
-// Tenta recuperar os itens salvos no localStorage
+// Tenta recuperar itens guardados
 const init = () => {
   try {
     const saved = localStorage.getItem("my-cart");
@@ -29,19 +21,19 @@ function cartReducer(state, action) {
       const exists = state.find((item) => item.id === action.payload.id);
 
       if (exists) {
-        // Se já existe, percorre o array e incrementa apenas a quantidade do item específico
+        // Se existe, incrementa a quantidade 
         return state.map((item) =>
           item.id === action.payload.id
             ? { ...item, quantity: item.quantity + 1 }
             : item,
         );
       }
-      // Se é um item novo, adiciona ao array com quantidade inicial de 1
+      // Se é um item novo, adiciona com quantidade inicial de 1
       return [...state, { ...action.payload, quantity: 1 }];
     }
 
     case "INCREASE":
-      // Aumenta a quantidade do item baseado no ID
+      // Aumenta a quantidade com base no ID
       return state.map((item) =>
         item.id === action.id ? { ...item, quantity: item.quantity + 1 } : item,
       );
@@ -67,7 +59,7 @@ function cartReducer(state, action) {
 
 // Provider Component: envolve a aplicação para prover o estado do carrinho
 export const CartProvider = ({ children }) => {
-  // useReducer gerencia o estado complexo do carrinho
+  // useReducer gerencia o estado do carrinho
   const [cartItems, dispatch] = useReducer(cartReducer, [], init);
 
   // localStorage
@@ -75,7 +67,7 @@ export const CartProvider = ({ children }) => {
     localStorage.setItem("my-cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
-  // Busca os dados do livro pelo ID antes de enviar para o reducer
+  // Busca os dados do livro pelo ID 
   function addToCart(bookId) {
     const book = getBookById(bookId);
     if (book) {
@@ -83,14 +75,13 @@ export const CartProvider = ({ children }) => {
       const finalPrice =
         book.discount > 0 ? book.price * (1 - book.discount / 100) : book.price;
 
-      // um novo objeto com o preço atualizado para o carrinho
       const bookWithDiscountedPrice = {
         ...book,
         price: finalPrice,
       };
 
       dispatch({ type: "ADD", payload: bookWithDiscountedPrice });
-      toast.success(`${book.title} adicionado ao carrinho!`);
+      toast(`${book.title} adicionado ao carrinho!`);
     }
   }
 
@@ -116,7 +107,7 @@ export const CartProvider = ({ children }) => {
   );
 };
 
-//Hook customizado para uso contexto em qualquer componente
+//Hook customizado para acessar o contexto do carrinho
 // eslint-disable-next-line react-refresh/only-export-components
 export const useCart = () => {
   const context = useContext(CartContext);

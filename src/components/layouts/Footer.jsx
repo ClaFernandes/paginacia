@@ -1,23 +1,24 @@
-import "./Footer.css";
-import { Link } from "react-router-dom";
-import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
+import { FaInstagram, FaFacebookF, FaYoutube } from "react-icons/fa";
+import "./Footer.css";
 
 function Footer() {
   const { isLoggedIn } = useAuth();
 
-  // Submissão newsletter
+  // Submissão newsletter fake
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
 
-    toast.success("Obrigado! Subscreveu a nossa newsletter com sucesso.");
+    toast("Obrigado! Subscreveu a nossa newsletter com sucesso.");
     e.target.reset();
   };
 
   return (
     <footer className="footer">
       <div className="footer-container">
+
         {/* Coluna 1 */}
         <div className="footer-column">
           <span className="logo-title">Página & Cia.</span>
@@ -41,11 +42,11 @@ function Footer() {
               <Link to="/favorites">Favoritos</Link>
             </li>
             <li>
-              {/* Se estiver logado, o link muda para Perfil, caso contrário mantém Login */}
+              {/* Se estiver logado, muda para Perfil, caso contrário Login */}
               {isLoggedIn ? (
                 <Link to="/profile">A Minha Conta</Link>
               ) : (
-                <Link to="/auth">Iniciar Sessão / Criar Conta</Link>
+                <Link to="/auth">Iniciar Sessão </Link>
               )}
             </li>
             <li>

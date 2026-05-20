@@ -1,13 +1,21 @@
 import "./About.css";
 import { FaBullseye, FaLightbulb } from "react-icons/fa";
+import { FaChevronLeft } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 function About() {
   return (
     <section className="about">
+
+      <div className="back-home-container">
+        <Link to="/" className="btn-back-home">
+          <FaChevronLeft /> Voltar à Página Inicial
+        </Link>
+      </div>
+
       <div className="about-hero">
         <h1>Sobre Nós</h1>
-        <p>Conheça a missão, a visão e o propósito da Página & Cia.</p>
+        <p>Conheça a missão, a visão e o propósito da Página & Cia</p>
       </div>
 
       <div className="about-section">
