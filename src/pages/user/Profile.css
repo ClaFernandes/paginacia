@@ -1,64 +1,293 @@
+/* =============================================
+   PROFILE.CSS — Perfil do utilizador
+   Segue o padrão visual do Contact.css
+   ============================================= */
+
+/* Wrapper de página, alinha com o padrão contact-wrapper */
 .profile-container {
-    max-width: 800px;
-    margin: 2rem auto;
-    padding: 2rem;
-    background: var(--bg-secondary);
-    border-radius: 1.5rem;
-    border: 1px solid var(--border);
+    width: 95%;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 2rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
-.profile-view p {
-    padding: 1rem 0;
-    border-bottom: 1px solid #f0f0f0;
-    font-size: 1rem;
-}
-
-.profile-view button,
-.profile-edit-form button[type="submit"] {
-    background: var(--primary);
-    color: white;
-    padding: 0.8rem 2rem;
-    border: none;
-    border-radius: 0.8rem;
-    cursor: pointer;
-    margin-top: 1.5rem;
-}
-
-.profile-edit-form input {
-    display: block;
-    width: 100%;
+/* Botão de voltar — idêntico ao .btn-back-contact */
+.back-home-wrapper {
     margin-bottom: 1rem;
-    padding: 0.8rem;
-    border: 1px solid var(--border);
-    border-radius: 0.5rem;
 }
 
-.form-actions {
+.btn-back-home {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    transition: color 0.2s;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.btn-back-home:hover {
+    color: var(--primary);
+}
+
+/* Título da página */
+.profile-container>h1 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* ── Card partilhado (visualização e edição) ── */
+.profile-view,
+.profile-edit-form {
+    background-color: var(--bg-secondary);
+    width: 100%;
+    padding: 3rem 3.5rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     display: flex;
-    gap: 15px;
+    flex-direction: column;
+    gap: 1rem;
 }
 
-.profile-actions {
-    display: flex;
-    gap: 15px;
-    margin-top: 2rem;
+/* ══ MODO VISUALIZAÇÃO ══ */
+.profile-view p {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+    line-height: 1.5;
 }
 
-.profile-actions button {
-    background: transparent;
-    border: 1px solid var(--border);
-    padding: 0.6rem 1rem;
+/* Remove separador do último item */
+.profile-view p:last-of-type {
+    border-bottom: none;
+}
+
+.profile-view strong {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.15rem;
+}
+
+/* Botão "Editar Dados" dentro do card de visualização */
+.profile-view button {
+    margin-top: 0.5rem;
+    align-self: flex-start;
+    background-color: var(--bg-dark);
+    color: #fff;
+    border: none;
+    padding: 0.65rem 2rem;
     border-radius: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.profile-view button:hover {
+    background-color: var(--bg-dark-alt);
+    transform: scale(1.02);
+}
+
+/* ══ MODO EDIÇÃO ══ */
+.profile-edit-form h3 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+}
+
+/* Inputs no formulário de edição — padrão Contact */
+.profile-edit-form input {
+    width: 100%;
+    border: 1px solid var(--border);
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.25rem;
+    background-color: var(--bg-primary);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.profile-edit-form input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(107, 182, 201, 0.18);
+    background-color: var(--bg-secondary);
+}
+
+.profile-edit-form input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+/* Secção da password (nota + inputs agrupados) */
+.pass-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem;
+    background-color: var(--bg-primary);
+    border-radius: 0.5rem;
+    border: 1px solid var(--border);
+}
+
+.pass-group small {
+    color: var(--text-secondary);
+    font-size: 0.78rem;
+}
+
+/* Botão do olho dentro do pass-group */
+.pass-group>button[type="button"] {
+    position: absolute;
+    right: 1.6rem;
+    /* alinhado com o padding do card */
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
     cursor: pointer;
     color: var(--text-secondary);
+    font-size: 1rem;
+    padding: 0;
+    display: flex;
+    align-items: center;
 }
 
+/* Botões de ação do formulário de edição */
+.form-actions {
+    display: flex;
+    gap: 1rem;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.form-actions button[type="submit"] {
+    background-color: var(--bg-dark);
+    color: #fff;
+    border: none;
+    padding: 0.65rem 2rem;
+    border-radius: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.form-actions button[type="submit"]:hover {
+    background-color: var(--bg-dark-alt);
+    transform: scale(1.02);
+}
+
+.form-actions button[type="button"] {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1.5px solid var(--border);
+    padding: 0.65rem 2rem;
+    border-radius: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.form-actions button[type="button"]:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+/* ── Ações de conta (terminar sessão / apagar conta) ── */
+.profile-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding-top: 0.5rem;
+}
+
+/* Botão "Terminar Sessão" */
+.profile-actions button:first-child {
+    background-color: transparent;
+    color: var(--text-secondary);
+    border: 1.5px solid var(--border);
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.profile-actions button:first-child:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+}
+
+/* Botão "Apagar Conta" — destrutivo */
+.profile-actions button:last-child {
+    background-color: transparent;
+    color: var(--danger);
+    border: 1.5px solid var(--danger);
+    padding: 0.6rem 1.5rem;
+    border-radius: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.profile-actions button:last-child:hover {
+    background-color: var(--danger);
+    color: #fff;
+}
+
+/* ── Responsividade ── */
 @media (max-width: 768px) {
-    .profile-container {
-        padding: 1.5rem;
+
+    .profile-view,
+    .profile-edit-form {
+        padding: 2rem 1.5rem;
     }
 
     .form-actions {
         flex-direction: column;
+    }
+
+    .form-actions button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .profile-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .profile-actions button {
+        width: 100%;
+        text-align: center;
     }
 }

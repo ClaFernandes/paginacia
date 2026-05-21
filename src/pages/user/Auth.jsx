@@ -1,187 +1,189 @@
 import { useState, useEffect } from "react";
-import { useForm } from "react-hook-form"; // Biblioteca para gerir o estado e validação de formulários
-import { useAuth } from "../../context/AuthContext"; // Contexto para gerir a sessão do utilizador (global)
-import { toast } from "react-toastify"; // Para exibir mensagens de alerta (Feedback visual)
-import { FaEye, FaEyeSlash } from "react-icons/fa"; // Ícones para a visibilidade da password
-import { useNavigate } from "react-router-dom"; // Hook para redirecionar o utilizador entre páginas
+import { useForm } from "react-hook-form";
+import { useAuth } from "../../context/AuthContext";
+import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import logoImage from "../../assets/logo.png";
 import "./Auth.css";
 
 const Auth = () => {
-    // 1. ESTADOS E HOOKS GLOBAIS
+    // ── Contexto global e navegação ──
     const { login, isLoggedIn } = useAuth();
     const navigate = useNavigate();
 
-    // 2. ESTADOS LOCAIS (INTERFACE)
-    const [isLoginMode, setIsLoginMode] = useState(true); // true = Login, false = Registo
-    const [isRecoveryMode, setIsRecoveryMode] = useState(false); // true = Modo recuperação ativo
-    const [isVerified, setIsVerified] = useState(false); // true = Identidade validada (Passo 2)
-    const [verifiedUserEmail, setVerifiedUserEmail] = useState(""); // Guarda o email do utilizador que está a recuperar
-    const [showPass, setShowPass] = useState(false); // Controla a visibilidade da password
+    // ── Estados de controlo da interface ──
+    const [isLoginMode, setIsLoginMode] = useState(true);  // true = Login | false = Registo
+    const [isRecoveryMode, setIsRecoveryMode] = useState(false); // Modo recuperação de password
+    const [isVerified, setIsVerified] = useState(false); // Passo 2 da recuperação (nova pass)
+    const [verifiedUserEmail, setVerifiedUserEmail] = useState("");
+    const [showPass, setShowPass] = useState(false); // Alterna visibilidade da password
 
-    // 3. CONFIGURAÇÃO DO REACT HOOK FORM
-    const { register, handleSubmit, watch, unregister, formState: { errors } } = useForm();
+    // ── React Hook Form ──
+    const {
+        register,
+        handleSubmit,
+        watch,
+        unregister,
+        formState: { errors },
+    } = useForm();
 
-    // Regex que aceita letras, números e símbolos (incluindo o '#')
+    // Regex de validação — mesma do Profile
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{6,}$/;
 
-    // Monitoriza as passwords para fazer as validações de igualdade em tempo real
+    // Observa o valor da password em tempo real para a validação de confirmação
     const passwordValue = watch("password");
     const recoveryPasswordValue = watch("newPassword");
 
-    // 4. EFEITOS COLATERAIS (USEEFFECT)
-    // Limpa os dados e validações dos campos ocultos ao alternar entre modos para evitar conflitos
+    // ── Limpa campos não usados ao mudar de modo ──
     useEffect(() => {
         if (isLoginMode || isRecoveryMode) {
             unregister([
-                "nome", "apelido", "nif", "telemovel", "morada", "confirmPassword",
-                "recoveryEmail", "recoveryNif", "recoveryPhone", "newPassword", "confirmNewPassword"
+                "nome", "apelido", "nif", "telemovel",
+                "morada.logradouro", "morada.numero", "morada.andar",
+                "morada.codigoPostal", "morada.cidade", "morada.pais",
+                "confirmPassword", "recoveryEmail", "recoveryNif",
+                "recoveryPhone", "newPassword", "confirmNewPassword",
             ]);
         }
     }, [isLoginMode, isRecoveryMode, unregister]);
 
-    // Redireciona para a Home se detetar que o utilizador já está logado
+    // ── Redireciona se já estiver autenticado ──
     useEffect(() => {
-        if (isLoggedIn) {
-            navigate("/");
-        }
+        if (isLoggedIn) navigate("/");
     }, [isLoggedIn, navigate]);
 
-    // 5. SUBMISSÃO DO FORMULÁRIO PRINCIPAL (LOGIN / REGISTO)
+    // ── Handler: Login e Registo ──
     const onAuthSubmit = (data) => {
         const savedUsers = JSON.parse(localStorage.getItem("registrations") || "[]");
 
         if (isLoginMode) {
-            // --- LÓGICA DE LOGIN ---
-            const foundUser = savedUsers.find(u => u.email === data.email && u.password === data.password);
-
+            // Verifica credenciais
+            const foundUser = savedUsers.find(
+                (u) => u.email === data.email && u.password === data.password
+            );
             if (foundUser) {
                 login(foundUser, "token-ativo");
-                toast.success("Bem-vindo de volta!");
+                toast("Bem-vindo!");
             } else {
                 toast.error("Email ou password incorretos.");
             }
         } else {
-            // --- LÓGICA DE REGISTO ---
-            if (savedUsers.some(u => u.email === data.email)) {
-                toast.error("Este email já está registado.");
+            // Registo: impede email duplicado
+            if (savedUsers.some((u) => u.email === data.email)) {
+                toast.error("Email já registado.");
                 return;
             }
-
+            // Remove confirmPassword antes de guardar
             const { confirmPassword, ...userData } = data;
             const newUser = { ...userData, id: "user-" + Date.now() };
-
             savedUsers.push(newUser);
             localStorage.setItem("registrations", JSON.stringify(savedUsers));
-
             login(newUser, "token-ativo");
             toast.success("Conta criada com sucesso!");
         }
     };
 
-    // 6. LÓGICA DE RECUPERAÇÃO DE PASSWORD (DOIS PASSOS)
-
-    // PASSO 1: Verificar se Email, NIF e Telemóvel existem e coincidem
+    // ── Handler: Verificar identidade (passo 1 da recuperação) ──
     const onVerifyIdentitySubmit = (data) => {
         const savedUsers = JSON.parse(localStorage.getItem("registrations") || "[]");
-
-        // AJUSTADO: Agora valida também se o campo 'telemovel' coincide com o 'recoveryPhone'
-        const foundUser = savedUsers.find(u =>
-            u.email === data.recoveryEmail &&
-            u.nif === data.recoveryNif &&
-            u.telemovel === data.recoveryPhone
+        const foundUser = savedUsers.find(
+            (u) =>
+                u.email === data.recoveryEmail &&
+                u.nif === data.recoveryNif &&
+                u.telemovel === data.recoveryPhone
         );
-
         if (foundUser) {
             setVerifiedUserEmail(data.recoveryEmail);
-            setIsVerified(true); // Avança para o Passo 2
-            toast.success("Identidade confirmada! Defina a sua nova palavra-passe.");
+            setIsVerified(true);
+            toast("Identidade validada.");
         } else {
-            toast.error("Dados incorretos. Os dados introduzidos não coincidem com nenhuma conta.");
+            toast.error("Dados incorretos.");
         }
     };
 
-    // PASSO 2: Gravar a nova Password no LocalStorage
+    // ── Handler: Gravar nova password (passo 2 da recuperação) ──
     const onResetPasswordSubmit = (data) => {
         const savedUsers = JSON.parse(localStorage.getItem("registrations") || "[]");
-
-        const updatedUsers = savedUsers.map(u => {
-            if (u.email === verifiedUserEmail) {
-                return { ...u, password: data.newPassword };
-            }
-            return u;
-        });
-
+        const updatedUsers = savedUsers.map((u) =>
+            u.email === verifiedUserEmail ? { ...u, password: data.newPassword } : u
+        );
         localStorage.setItem("registrations", JSON.stringify(updatedUsers));
-
+        // Volta ao modo de login
         setIsVerified(false);
         setIsRecoveryMode(false);
         setIsLoginMode(true);
-        setVerifiedUserEmail("");
-
-        toast.success("Palavra-passe redefinida com sucesso! Já pode iniciar sessão.");
+        toast("Palavra-passe alterada!");
     };
 
-    // -------------------------------------------------------------
-    // RENDERIZAÇÃO DO MODO DE RECUPERAÇÃO / REDEFINIÇÃO
-    // -------------------------------------------------------------
+    // ════════════════════════════════════════
+    // RENDER — Modo de Recuperação de Password
+    // ════════════════════════════════════════
     if (isRecoveryMode) {
         return (
             <div className="auth-wrapper">
                 <div className="auth-split-container">
                     <div className="auth-form-side">
-                        <h2>Recuperar Conta</h2>
 
-                        {/* PASSO 1: Verificação de Identidade (Três campos agora) */}
+                        {/* Botão de voltar ao login */}
+                        <button
+                            type="button"
+                            className="btn-forgot"
+                            style={{ alignSelf: "flex-start", marginBottom: "1rem" }}
+                            onClick={() => { setIsRecoveryMode(false); setIsVerified(false); }}
+                        >
+                            ← Voltar ao login
+                        </button>
+
+                        <h2>Recuperar Conta</h2>
+                        <p className="auth-subtitle">
+                            {!isVerified
+                                ? "Confirma a tua identidade para continuar."
+                                : "Define a tua nova palavra-passe."}
+                        </p>
+
+                        {/* Passo 1: verificar identidade */}
                         {!isVerified ? (
                             <form onSubmit={handleSubmit(onVerifyIdentitySubmit)}>
-                                <p style={{ marginBottom: "20px", color: "#666", fontSize: "14px" }}>
-                                    Insira o seu email, NIF e telemóvel associados para validar a sua conta.
-                                </p>
                                 <input
-                                    {...register("recoveryEmail", { required: true })}
+                                    {...register("recoveryEmail", { required: "Email obrigatório" })}
                                     type="email"
-                                    placeholder="Email de Registo"
+                                    placeholder="Email"
                                 />
-                                <input
-                                    {...register("recoveryNif", { required: true })}
-                                    type="text"
-                                    placeholder="O seu NIF"
-                                />
-                                {/* NOVO: Input adicionado para recolha do telemóvel na recuperação */}
-                                <input
-                                    {...register("recoveryPhone", { required: true })}
-                                    type="text"
-                                    placeholder="Telemóvel de Registo"
-                                />
+                                {errors.recoveryEmail && (
+                                    <p className="field-error">{errors.recoveryEmail.message}</p>
+                                )}
 
-                                <button type="submit" className="btn-main">
-                                    VERIFICAR IDENTIDADE
-                                </button>
+                                <input
+                                    {...register("recoveryNif", { required: "NIF obrigatório" })}
+                                    placeholder="NIF"
+                                />
+                                {errors.recoveryNif && (
+                                    <p className="field-error">{errors.recoveryNif.message}</p>
+                                )}
 
-                                <button
-                                    type="button"
-                                    onClick={() => setIsRecoveryMode(false)}
-                                    style={{ background: "none", border: "none", color: "#555", marginTop: "15px", cursor: "pointer", textDecoration: "underline" }}
-                                >
-                                    Voltar para o Login
-                                </button>
+                                <input
+                                    {...register("recoveryPhone", { required: "Telemóvel obrigatório" })}
+                                    placeholder="Telemóvel"
+                                />
+                                {errors.recoveryPhone && (
+                                    <p className="field-error">{errors.recoveryPhone.message}</p>
+                                )}
+
+                                <button type="submit" className="btn-main">Verificar</button>
                             </form>
                         ) : (
-                            /* PASSO 2: Criação da Nova Password */
+                            /* Passo 2: nova password */
                             <form onSubmit={handleSubmit(onResetPasswordSubmit)}>
-                                <p style={{ marginBottom: "20px", color: "#666", fontSize: "14px" }}>
-                                    Introduza e confirme a sua nova chave de acesso segura.
-                                </p>
-
                                 <div className="pass-input">
                                     <input
                                         type={showPass ? "text" : "password"}
                                         {...register("newPassword", {
-                                            required: true,
+                                            required: "Campo obrigatório",
                                             pattern: {
                                                 value: passwordRegex,
-                                                message: "Mínimo 6 caracteres, com maiúscula, minúscula, número e especial (ex: #)."
-                                            }
+                                                message: "Mín. 6 caracteres, maiúscula, minúscula, número e símbolo.",
+                                            },
                                         })}
                                         placeholder="Nova Palavra-Passe"
                                     />
@@ -189,74 +191,102 @@ const Auth = () => {
                                         {showPass ? <FaEyeSlash /> : <FaEye />}
                                     </button>
                                 </div>
-                                {errors.newPassword && <p className="error">{errors.newPassword.message}</p>}
+                                {errors.newPassword && (
+                                    <p className="field-error">{errors.newPassword.message}</p>
+                                )}
 
                                 <div className="pass-input">
                                     <input
                                         type={showPass ? "text" : "password"}
                                         {...register("confirmNewPassword", {
-                                            required: "Confirme a sua nova palavra-passe",
-                                            validate: value => value === recoveryPasswordValue || "As palavras-passe não coincidem"
+                                            required: "Campo obrigatório",
+                                            validate: (v) =>
+                                                v === recoveryPasswordValue || "As palavras-passe não coincidem.",
                                         })}
-                                        placeholder="Confirmar Nova Palavra-Passe"
+                                        placeholder="Confirmar Palavra-Passe"
                                     />
-                                    <button type="button" onClick={() => setShowPass(!showPass)}>
-                                        {showPass ? <FaEyeSlash /> : <FaEye />}
-                                    </button>
                                 </div>
-                                {errors.confirmNewPassword && <p className="error">{errors.confirmNewPassword.message}</p>}
+                                {errors.confirmNewPassword && (
+                                    <p className="field-error">{errors.confirmNewPassword.message}</p>
+                                )}
 
-                                <button type="submit" className="btn-main" style={{ marginTop: "10px" }}>
-                                    GRAVAR NOVA PALAVRA-PASSE
-                                </button>
+                                <button type="submit" className="btn-main">Gravar</button>
                             </form>
                         )}
+                    </div>
+
+                    {/* Painel lateral no modo de recuperação */}
+                    <div className="auth-info-side">
+                        <img src={logoImage} alt="Logo" />
+                        <span className="auth-brand-name">Página &amp; Cia</span>
+                        <div className="auth-info-divider" />
+                        <h3>Recupera o acesso à tua conta</h3>
+                        <p>Confirma a tua identidade e define uma nova palavra-passe em segundos.</p>
                     </div>
                 </div>
             </div>
         );
     }
 
-    // -------------------------------------------------------------
-    // RENDERIZAÇÃO DO MODO PADRÃO (LOGIN / REGISTO)
-    // -------------------------------------------------------------
+    // ════════════════════════════════════════
+    // RENDER — Login / Registo
+    // ════════════════════════════════════════
     return (
         <div className="auth-wrapper">
             <div className="auth-split-container">
+
+                {/* ── Formulário ── */}
                 <div className="auth-form-side">
                     <h2>{isLoginMode ? "Iniciar Sessão" : "Criar Conta"}</h2>
+                    <p className="auth-subtitle">
+                        {isLoginMode
+                            ? "Bem-vindo de volta. Introduz as tuas credenciais."
+                            : "Preenche os teus dados para criar uma conta."}
+                    </p>
 
                     <form onSubmit={handleSubmit(onAuthSubmit)}>
 
-                        {/* CAMPOS EXCLUSIVOS DO MODO DE REGISTO */}
+                        {/* Campos exclusivos do modo Registo em grelha de 2 colunas */}
                         {!isLoginMode && (
-                            <>
-                                <input {...register("nome", { required: !isLoginMode })} placeholder="Nome" />
-                                <input {...register("apelido", { required: !isLoginMode })} placeholder="Apelido" />
-                                <input {...register("nif", { required: !isLoginMode })} placeholder="NIF" />
+                            <div className="form-grid">
+                                <input {...register("nome", { required: true })} placeholder="Nome" />
+                                <input {...register("apelido", { required: true })} placeholder="Apelido" />
+                                <input {...register("nif", { required: true })} placeholder="NIF" />
                                 <input {...register("telemovel")} placeholder="Telemóvel" />
-                                <input {...register("morada.logradouro", { required: !isLoginMode })} placeholder="Rua / Logradouro" />
-                                <input {...register("morada.numero")} placeholder="Número da Porta" />
-                                <input {...register("morada.andar")} placeholder="Andar / Apartamento" />
-                                <input {...register("morada.codigoPostal", { required: !isLoginMode })} placeholder="Código Postal" />
-                                <input {...register("morada.cidade", { required: !isLoginMode })} placeholder="Cidade" />
-                                <input {...register("morada.pais", { required: !isLoginMode })} placeholder="País" />
-                            </>
+
+                                {/* Campos de morada */}
+                                <input
+                                    className="full-width"
+                                    {...register("morada.logradouro", { required: true })}
+                                    placeholder="Rua / Logradouro"
+                                />
+                                <input {...register("morada.numero")} placeholder="Nº" />
+                                <input {...register("morada.andar")} placeholder="Andar" />
+                                <input {...register("morada.codigoPostal", { required: true })} placeholder="Cód. Postal" />
+                                <input {...register("morada.cidade", { required: true })} placeholder="Cidade" />
+                                <input {...register("morada.pais", { required: true })} placeholder="País" />
+                            </div>
                         )}
 
-                        {/* CAMPO DE EMAIL */}
-                        <input {...register("email", { required: true })} type="email" placeholder="Email" />
+                        {/* Email — presente em ambos os modos */}
+                        <input
+                            {...register("email", { required: "Email obrigatório" })}
+                            type="email"
+                            placeholder="Email"
+                        />
+                        {errors.email && <p className="field-error">{errors.email.message}</p>}
 
-                        {/* BLOCO DA PALAVRA-PASSE */}
+                        {/* Password com toggle de visibilidade */}
                         <div className="pass-input">
                             <input
                                 type={showPass ? "text" : "password"}
                                 {...register("password", {
-                                    required: true,
-                                    pattern: isLoginMode ? undefined : {
-                                        value: passwordRegex,
-                                        message: "Mínimo 6 caracteres, com maiúscula, minúscula, número e especial (ex: #)."
-                                    }
+                                    required: "Password obrigatória",
+                                    // Valida complexidade apenas no registo
+                                    validate: (v) =>
+                                        isLoginMode ||
+                                        passwordRegex.test(v) ||
+                                        "Mín. 6 caracteres, maiúscula, minúscula, número e símbolo.",
                                 })}
                                 placeholder="Palavra-Passe"
                             />
@@ -264,50 +294,69 @@ const Auth = () => {
                                 {showPass ? <FaEyeSlash /> : <FaEye />}
                             </button>
                         </div>
-                        {errors.password && <p className="error">{errors.password.message}</p>}
+                        {errors.password && <p className="field-error">{errors.password.message}</p>}
 
-                        {/* BLOCO DE CONFIRMAÇÃO DE PALAVRA-PASSE (Apenas no Registo) */}
+                        {/* Confirmação de password — só no Registo */}
                         {!isLoginMode && (
-                            <div className="pass-input">
-                                <input
-                                    type={showPass ? "text" : "password"}
-                                    {...register("confirmPassword", {
-                                        required: !isLoginMode ? "Confirma a tua palavra-passe" : false,
-                                        validate: value => isLoginMode || value === passwordValue || "As palavras-passe não coincidem"
-                                    })}
-                                    placeholder="Confirmar Palavra-Passe"
-                                />
-                                <button type="button" onClick={() => setShowPass(!showPass)}>
-                                    {showPass ? <FaEyeSlash /> : <FaEye />}
-                                </button>
-                            </div>
+                            <>
+                                <div className="pass-input">
+                                    <input
+                                        type={showPass ? "text" : "password"}
+                                        {...register("confirmPassword", {
+                                            required: "Confirmação obrigatória",
+                                            validate: (v) =>
+                                                v === passwordValue || "As palavras-passe não coincidem.",
+                                        })}
+                                        placeholder="Confirmar Palavra-Passe"
+                                    />
+                                </div>
+                                {errors.confirmPassword && (
+                                    <p className="field-error">{errors.confirmPassword.message}</p>
+                                )}
+                            </>
                         )}
-                        {errors.confirmPassword && <p className="error">{errors.confirmPassword.message}</p>}
 
-                        {/* Link de "Esqueci-me da password" */}
+                        {/* Link "Esqueci a password" — só no Login */}
                         {isLoginMode && (
-                            <div style={{ textAlign: "right", marginBottom: "15px" }}>
-                                <button
-                                    type="button"
-                                    onClick={() => setIsRecoveryMode(true)}
-                                    style={{ background: "none", border: "none", color: "#0f4c5c", cursor: "pointer", fontSize: "13px", textDecoration: "underline" }}
-                                >
-                                    Esqueceu-se da palavra-passe?
-                                </button>
-                            </div>
+                            <button
+                                type="button"
+                                className="btn-forgot"
+                                onClick={() => setIsRecoveryMode(true)}
+                            >
+                                Esqueci a palavra-passe?
+                            </button>
                         )}
 
                         <button type="submit" className="btn-main">
-                            {isLoginMode ? "INICIAR SESSÃO" : "CRIAR CONTA"}
+                            {isLoginMode ? "Entrar" : "Registar"}
                         </button>
                     </form>
                 </div>
 
+                {/* ── Painel lateral — substitui o bloco auth-info-side existente ── */}
                 <div className="auth-info-side">
-                    <button type="button" onClick={() => setIsLoginMode(!isLoginMode)} className="btn-secondary">
-                        {isLoginMode ? "CRIAR CONTA" : "INICIAR SESSÃO"}
+                    <img src={logoImage} alt="Logo" />
+                    <span className="auth-brand-name">Página &amp; Cia</span>
+
+                    <div className="auth-info-divider" />
+
+                    <h3>
+                        {isLoginMode ? "Ainda não tens conta?" : "Já tens conta?"}
+                    </h3>
+                    <p>
+                        {isLoginMode
+                            ? "Regista-te gratuitamente e começa a explorar."
+                            : "Inicia sessão e acede à tua área pessoal."}
+                    </p>
+                    <button
+                        type="button"
+                        className="btn-secondary"
+                        onClick={() => setIsLoginMode(!isLoginMode)}
+                    >
+                        {isLoginMode ? "Criar Conta" : "Iniciar Sessão"}
                     </button>
                 </div>
+
             </div>
         </div>
     );

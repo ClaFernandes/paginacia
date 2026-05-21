@@ -52,6 +52,9 @@ function cartReducer(state, action) {
       // Remove o item completamente do array
       return state.filter((item) => item.id !== action.id);
 
+    case "CLEAR":
+      return [];
+
     default:
       return state;
   }
@@ -98,6 +101,7 @@ export const CartProvider = ({ children }) => {
       dispatch,
       addToCart,
       totalPrice,
+      clearCart: () => dispatch({ type: "CLEAR" }),
     }),
     [cartItems, totalPrice],
   );

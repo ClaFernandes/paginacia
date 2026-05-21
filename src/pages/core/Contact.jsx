@@ -1,9 +1,12 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaChevronLeft } from "react-icons/fa";
 import "./Contact.css";
 
 function Contact() {
+  const navigate = useNavigate();
+
+  // Estado do formulário 
   const [formData, setFormData] = useState({
     nome: "",
     apelido: "",
@@ -12,13 +15,16 @@ function Contact() {
     mensagem: "",
   });
 
+  // Estado de feedback
   const [status, setStatus] = useState({ type: "", msg: "" });
 
+  // Atualiza apenas o campo alterado, preservando os restantes com spread
   function handleChange(e) {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   }
 
+  // Validação manual
   function validateForm() {
     const { nome, apelido, email, assunto, mensagem } = formData;
     if (!nome || !apelido || !email || !assunto || !mensagem) {
@@ -32,52 +38,39 @@ function Contact() {
     setStatus({ type: "", msg: "" });
     const error = validateForm();
     if (error) {
-      setStatus({
-        type: "error",
-        msg: error,
-      });
+      setStatus({ type: "error", msg: error });
       return;
     }
 
+    // Simula envio
     setTimeout(() => {
-      setStatus({
-        type: "success",
-        msg: "Mensagem enviada com sucesso!",
-      });
-
-      setFormData({
-        nome: "",
-        apelido: "",
-        email: "",
-        assunto: "",
-        mensagem: "",
-      });
+      setStatus({ type: "success", msg: "Mensagem enviada com sucesso!" });
+      setFormData({ nome: "", apelido: "", email: "", assunto: "", mensagem: "" });
+      setTimeout(() => navigate("/"), 1000);
     }, 1000);
   }
 
   return (
-    <>
-      <div className="back-home-container">
-        <Link to="/" className="btn-back-home">
-          <FaChevronLeft /> Voltar à Página Inicial
-        </Link>
-      </div>
+    <div className="contact-wrapper">
+
+      <Link to="/" className="btn-back-contact">
+        <FaChevronLeft /> Voltar à Página Inicial
+      </Link>
 
       <form className="contact-form" onSubmit={handleSubmit}>
-
         <h1>Contacto</h1>
-
         <p className="contact-subtitle">
           Estamos aqui para ajudar. Envia-nos a tua mensagem.
         </p>
 
+        {/* Feedback de erro ou sucesso */}
         {status.msg && (
           <div className={`form-status ${status.type}`}>
             {status.msg}
           </div>
         )}
 
-        <div className="row">
+        <div className="contact-row">
           <div className="input-group">
             <label>Nome</label>
             <input
@@ -88,7 +81,6 @@ function Contact() {
               onChange={handleChange}
             />
           </div>
-
           <div className="input-group">
             <label>Apelido</label>
             <input
@@ -114,11 +106,7 @@ function Contact() {
 
         <div className="input-group">
           <label>Assunto</label>
-          <select
-            name="assunto"
-            value={formData.assunto}
-            onChange={handleChange}
-          >
+          <select name="assunto" value={formData.assunto} onChange={handleChange}>
             <option value="">Seleciona um assunto</option>
             <option value="Encomendas">Encomendas</option>
             <option value="Entregas">Entregas</option>
@@ -141,8 +129,7 @@ function Contact() {
 
         <button type="submit">Enviar mensagem</button>
       </form>
-    </>
-
+    </div>
   );
 }
 

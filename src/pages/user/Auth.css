@@ -1,84 +1,317 @@
-/* Container Principal */
+/* =============================================
+   AUTH.CSS — Login, Registo e Recuperação
+   ============================================= */
+
+/* Wrapper que ocupa o ecrã e centra o card */
 .auth-wrapper {
     display: flex;
-    justify-content: center;
     align-items: center;
-    min-height: 85vh;
-    padding: 20px;
-    background-color: #f4f7f6;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 2rem 1rem;
+    background-color: var(--bg-primary);
 }
 
+/* Card principal dividido em dois lados */
 .auth-split-container {
-    background: white;
-    padding: 2.5rem;
-    border-radius: 1.5rem;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    display: flex;
     width: 100%;
-    max-width: 500px;
-    text-align: center;
+    max-width: 900px;
+    background-color: var(--bg-secondary);
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
+    overflow: hidden;
+    /* altura mínima no login, deixa crescer no registo */
+    min-height: 480px;
 }
 
-/* Inputs e Formulário */
+/* ══════════════════════════════════════
+   LADO ESQUERDO — formulário
+   ══════════════════════════════════════ */
+.auth-form-side {
+    flex: 1.4;
+    padding: 3rem 3.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Título */
+.auth-form-side h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+}
+
+/* Subtítulo descritivo */
+.auth-subtitle {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-bottom: 1.75rem;
+    line-height: 1.5;
+}
+
+/* Formulário com gap uniforme entre elementos */
+.auth-form-side form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}
+
+/* ── Grid do registo: 2 colunas ── */
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+
+/* Campo que ocupa as duas colunas */
+.form-grid .full-width {
+    grid-column: 1 / -1;
+}
+
+/* ── Inputs ── */
 .auth-form-side input {
     width: 100%;
-    padding: 0.9rem;
-    margin-bottom: 1rem;
-    border: 1px solid #ddd;
-    border-radius: 0.8rem;
-    font-size: 1rem;
+    height: 44px;
+    border: 1.5px solid var(--border);
+    padding: 0 0.9rem;
+    border-radius: 0.5rem;
+    background-color: var(--bg-primary);
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    color: var(--text-primary);
+    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    outline: none;
     box-sizing: border-box;
-    /* Garante que o padding não alarga o input */
 }
 
+.auth-form-side input:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(107, 182, 201, 0.18);
+    background-color: var(--bg-secondary);
+}
+
+.auth-form-side input::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.55;
+    font-size: 0.85rem;
+}
+
+/* ── Wrapper de input com ícone de olho ── */
 .pass-input {
     position: relative;
     display: flex;
     align-items: center;
 }
 
+/* O input dentro do pass-input não tem margin extra */
+.pass-input input {
+    padding-right: 2.8rem;
+    margin-bottom: 0;
+}
+
+/* Botão do olho sobreposto ao input */
 .pass-input button {
     position: absolute;
-    right: 15px;
+    right: 0.8rem;
     background: none;
     border: none;
     cursor: pointer;
-    color: #888;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    padding: 0;
+    font-size: 1rem;
+    line-height: 1;
+    transition: color 0.2s;
 }
 
-/* Botões */
+.pass-input button:hover {
+    color: var(--text-primary);
+}
+
+/* ── Erros inline ── */
+.field-error {
+    color: var(--danger);
+    font-size: 0.75rem;
+    margin-top: -0.5rem;
+    /* "sobe" para ficar colado ao input */
+}
+
+/* ── Link "Esqueci a password" ── */
+.btn-forgot {
+    background: none;
+    border: none;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    cursor: pointer;
+    text-align: right;
+    padding: 0;
+    transition: color 0.2s;
+    align-self: flex-end;
+    margin-top: -0.2rem;
+    /* reduz o gap com o input acima */
+}
+
+.btn-forgot:hover {
+    color: var(--primary);
+    text-decoration: underline;
+}
+
+/* ── Botão principal (submit) ── */
 .btn-main {
     width: 100%;
-    padding: 1rem;
-    background-color: #0f4c5c;
-    color: white;
+    height: 48px;
+    background-color: var(--bg-dark);
+    color: #fff;
     border: none;
-    border-radius: 0.8rem;
-    font-weight: bold;
+    border-radius: 0.6rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
     cursor: pointer;
-    margin-top: 10px;
+    transition: background-color 0.2s, transform 0.15s;
+    margin-top: 0.25rem;
 }
 
-.btn-secondary {
-    width: 100%;
-    padding: 1rem;
-    background-color: transparent;
-    border: 1px solid #0f4c5c;
-    color: #0f4c5c;
-    border-radius: 0.8rem;
-    cursor: pointer;
-    margin-top: 15px;
+.btn-main:hover {
+    background-color: var(--bg-dark-alt);
+    transform: scale(1.01);
 }
 
-.error {
-    color: #d9534f;
+.btn-main:active {
+    transform: scale(0.99);
+}
+
+/* ══════════════════════════════════════
+   LADO DIREITO — painel de marca
+   ══════════════════════════════════════ */
+.auth-info-side {
+    flex: 1;
+    background-color: var(--bg-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 2rem;
+    gap: 1.25rem;
+    color: var(--text-light);
+    text-align: center;
+    /* Gradiente sutil para dar profundidade */
+    background-image: linear-gradient(160deg, #0F3D3E 60%, #0A2B2C 100%);
+}
+
+/* Logo */
+.auth-info-side img {
+    width: 72px;
+    opacity: 0.95;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+    margin-bottom: 0.25rem;
+}
+
+/* Nome da marca abaixo da logo */
+.auth-brand-name {
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+    margin-top: -0.75rem;
+    /* "sobe" para ficar perto da logo */
+}
+
+/* Título do painel */
+.auth-info-side h3 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #fff;
+    margin: 0;
+}
+
+/* Texto descritivo */
+.auth-info-side p {
     font-size: 0.85rem;
-    margin-bottom: 1rem;
-    text-align: left;
+    color: rgba(255, 255, 255, 0.62);
+    line-height: 1.65;
+    margin: 0;
+    max-width: 200px;
 }
 
-/* Responsividade */
-@media (max-width: 600px) {
+/* Divisor visual sutil */
+.auth-info-divider {
+    width: 36px;
+    height: 2px;
+    background-color: var(--primary);
+    border-radius: 2px;
+    opacity: 0.7;
+}
+
+/* Botão secundário (mudar modo) */
+.btn-secondary {
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    color: #fff;
+    padding: 0.65rem 1.75rem;
+    border-radius: 0.6rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+    margin-top: 0.25rem;
+}
+
+.btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVIDADE
+   ══════════════════════════════════════ */
+@media (max-width: 768px) {
     .auth-split-container {
-        padding: 1.5rem;
+        flex-direction: column;
+        border-radius: 1rem;
+    }
+
+    /* Painel de marca vai para cima em mobile */
+    .auth-info-side {
+        order: -1;
+        padding: 1.75rem 1.5rem;
+        gap: 0.75rem;
+        min-height: unset;
+    }
+
+    .auth-info-side img {
+        width: 52px;
+    }
+
+    .auth-info-side h3 {
+        font-size: 1.1rem;
+    }
+
+    .auth-info-divider {
+        display: none;
+    }
+
+    .auth-form-side {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Uma coluna em mobile */
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .form-grid .full-width {
+        grid-column: 1;
     }
 }
