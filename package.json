@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://clafernandes.github.io/paginaecia/",
+  "homepage": "https://clafernandes.github.io/paginacia/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
