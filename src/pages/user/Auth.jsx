@@ -60,7 +60,7 @@ const Auth = () => {
             );
             if (foundUser) {
                 login(foundUser, "token-ativo");
-                toast.info("Bem-vindo!");
+                toast.success("Bem-vindo!");
             } else {
                 toast.error("Email ou password incorretos.");
             }
