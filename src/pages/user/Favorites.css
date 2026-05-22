@@ -37,14 +37,6 @@
     flex-shrink: 0;
 }
 
-
-.favorites-list-wrapper {
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
-    width: 100%;
-}
-
 .favorites-empty {
     text-align: center;
     padding: 8rem;

@@ -1,15 +1,12 @@
 import logoImage from "../../assets/logo.png";
-
 import { Link, useNavigate } from "react-router-dom";
-
 import { useState, useRef, useEffect } from "react";
 import { useCart } from "../../context/CartContext";
 import { useAuth } from "../../context/AuthContext";
-
 import { MdOutlineShoppingCart, MdSearch, MdMenu, MdClose } from "react-icons/md";
 import { RxAvatar } from "react-icons/rx";
 import { GrFavorite } from "react-icons/gr";
-
+import { toast } from "react-toastify";
 import "./Header.css";
 
 const Header = ({ onOpenCart, searchTerm, setSearchTerm }) => {
@@ -90,7 +87,14 @@ const Header = ({ onOpenCart, searchTerm, setSearchTerm }) => {
                     <div className="user-menu">
                       <p className="user-greeting">Olá, <strong>{user?.nome || "Utilizador"}</strong></p>
                       <button onClick={() => { handleCloseMenu(); navigate("/profile"); }}>Ver Perfil</button>
-                      <button onClick={() => { logout(); handleCloseMenu(); }}>Terminar Sessão</button>
+                      <button onClick={() => {
+                        logout();
+                        handleCloseMenu();
+                        toast.error("Sessão terminada. Até breve!");
+                        navigate("/");
+                      }}>
+                        Terminar Sessão
+                      </button>
                     </div>
                   )}
                 </div>

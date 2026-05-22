@@ -84,7 +84,7 @@ export const CartProvider = ({ children }) => {
       };
 
       dispatch({ type: "ADD", payload: bookWithDiscountedPrice });
-      toast(`${book.title} adicionado ao carrinho!`);
+      toast.success(`${book.title} adicionado ao carrinho!`);
     }
   }
 

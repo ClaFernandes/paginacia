@@ -124,7 +124,8 @@
   color: var(--text-secondary);
 }
 
-.favorite-button:hover {
+/* Estado ativo do favorito */
+.favorite-btn-square.is-favorite {
   color: var(--danger);
   border-color: var(--danger);
   background-color: #fff1f1;

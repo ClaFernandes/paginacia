@@ -17,7 +17,7 @@ export function FavoritesProvider({ children }) {
     const updatedFavorites = [...favorites, book];
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    toast(`"${book.title}" guardado nos favoritos!`);
+    toast.success(`"${book.title}" guardado nos favoritos!`);
   };
 
   // Remover dos favoritos
@@ -25,7 +25,7 @@ export function FavoritesProvider({ children }) {
     const updatedFavorites = favorites.filter((fav) => fav.id !== id);
     setFavorites(updatedFavorites);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
-    toast.error("Livro removido dos favoritos.");
+    toast.warn("Livro removido dos favoritos.");
   };
 
   // Alternar estado de favorito
