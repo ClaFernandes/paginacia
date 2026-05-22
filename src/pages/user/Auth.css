@@ -1,33 +1,23 @@
-/* =============================================
-   AUTH.CSS — Login, Registo e Recuperação
-   ============================================= */
-
-/* Wrapper que ocupa o ecrã e centra o card */
 .auth-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    min-height: calc(100vh - 100px);
     padding: 2rem 1rem;
     background-color: var(--bg-primary);
 }
 
-/* Card principal dividido em dois lados */
 .auth-split-container {
     display: flex;
     width: 100%;
     max-width: 900px;
     background-color: var(--bg-secondary);
-    border-radius: 1.25rem;
+    border-radius: 1rem;
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10);
     overflow: hidden;
-    /* altura mínima no login, deixa crescer no registo */
     min-height: 480px;
 }
 
-/* ══════════════════════════════════════
-   LADO ESQUERDO — formulário
-   ══════════════════════════════════════ */
 .auth-form-side {
     flex: 1.4;
     padding: 3rem 3.5rem;
@@ -36,16 +26,13 @@
     justify-content: center;
 }
 
-/* Título */
 .auth-form-side h2 {
     font-size: 2rem;
     font-weight: 700;
     color: var(--text-primary);
     margin-bottom: 0.35rem;
-    line-height: 1.2;
 }
 
-/* Subtítulo descritivo */
 .auth-subtitle {
     color: var(--text-secondary);
     font-size: 0.9rem;
@@ -53,37 +40,44 @@
     line-height: 1.5;
 }
 
-/* Formulário com gap uniforme entre elementos */
 .auth-form-side form {
     display: flex;
     flex-direction: column;
     gap: 0.85rem;
 }
 
-/* ── Grid do registo: 2 colunas ── */
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0.75rem;
+    margin-bottom: 0.25rem;
 }
 
-/* Campo que ocupa as duas colunas */
-.form-grid .full-width {
-    grid-column: 1 / -1;
+.auth-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
-/* ── Inputs ── */
+.auth-field label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
 .auth-form-side input {
     width: 100%;
-    height: 44px;
-    border: 1.5px solid var(--border);
-    padding: 0 0.9rem;
-    border-radius: 0.5rem;
+    height: 40px;
+    border: 1px solid var(--border);
+    padding: 0 0.75rem;
+    border-radius: 0.25rem;
     background-color: var(--bg-primary);
     font-family: 'Poppins', sans-serif;
     font-size: 0.88rem;
     color: var(--text-primary);
-    transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s;
+    transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
     box-sizing: border-box;
 }
@@ -100,21 +94,17 @@
     font-size: 0.85rem;
 }
 
-/* ── Wrapper de input com ícone de olho ── */
 .pass-input {
     position: relative;
     display: flex;
     align-items: center;
 }
 
-/* O input dentro do pass-input não tem margin extra */
 .pass-input input {
     padding-right: 2.8rem;
-    margin-bottom: 0;
 }
 
-/* Botão do olho sobreposto ao input */
-.pass-input button {
+.pass-eye-btn {
     position: absolute;
     right: 0.8rem;
     background: none;
@@ -125,23 +115,19 @@
     align-items: center;
     padding: 0;
     font-size: 1rem;
-    line-height: 1;
     transition: color 0.2s;
 }
 
-.pass-input button:hover {
+.pass-eye-btn:hover {
     color: var(--text-primary);
 }
 
-/* ── Erros inline ── */
 .field-error {
     color: var(--danger);
     font-size: 0.75rem;
-    margin-top: -0.5rem;
-    /* "sobe" para ficar colado ao input */
+    margin-top: -0.25rem;
 }
 
-/* ── Link "Esqueci a password" ── */
 .btn-forgot {
     background: none;
     border: none;
@@ -153,8 +139,6 @@
     padding: 0;
     transition: color 0.2s;
     align-self: flex-end;
-    margin-top: -0.2rem;
-    /* reduz o gap com o input acima */
 }
 
 .btn-forgot:hover {
@@ -162,14 +146,18 @@
     text-decoration: underline;
 }
 
-/* ── Botão principal (submit) ── */
+.btn-forgot--back {
+    align-self: flex-start;
+    margin-bottom: 1rem;
+}
+
 .btn-main {
     width: 100%;
     height: 48px;
     background-color: var(--bg-dark);
     color: #fff;
     border: none;
-    border-radius: 0.6rem;
+    border-radius: 0.5rem;
     font-family: 'Poppins', sans-serif;
     font-size: 0.95rem;
     font-weight: 700;
@@ -188,12 +176,10 @@
     transform: scale(0.99);
 }
 
-/* ══════════════════════════════════════
-   LADO DIREITO — painel de marca
-   ══════════════════════════════════════ */
+/* Lado direito - marca */
 .auth-info-side {
     flex: 1;
-    background-color: var(--bg-dark);
+    background: linear-gradient(160deg, #2d8a8d 0%, #1a5c5e 50%, #0F3D3E 90%);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -202,87 +188,97 @@
     gap: 1.25rem;
     color: var(--text-light);
     text-align: center;
-    /* Gradiente sutil para dar profundidade */
-    background-image: linear-gradient(160deg, #0F3D3E 60%, #0A2B2C 100%);
+    position: relative;
+    overflow: hidden;
 }
 
-/* Logo */
+.auth-info-side::before,
+.auth-info-side::after {
+    display: none;
+}
+
 .auth-info-side img {
-    width: 72px;
-    opacity: 0.95;
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.25));
+    width: 150px;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
     margin-bottom: 0.25rem;
+    position: relative;
+    z-index: 1;
 }
 
-/* Nome da marca abaixo da logo */
 .auth-brand-name {
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.5);
+    color: rgba(107, 182, 201, 0.85);
     margin-top: -0.75rem;
-    /* "sobe" para ficar perto da logo */
+    position: relative;
+    z-index: 1;
 }
 
-/* Título do painel */
 .auth-info-side h3 {
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     font-weight: 700;
-    line-height: 1.35;
     color: #fff;
     margin: 0;
+    line-height: 1.35;
+    position: relative;
+    z-index: 1;
 }
 
-/* Texto descritivo */
 .auth-info-side p {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.62);
     line-height: 1.65;
     margin: 0;
     max-width: 200px;
+    position: relative;
+    z-index: 1;
 }
 
-/* Divisor visual sutil */
 .auth-info-divider {
     width: 36px;
     height: 2px;
     background-color: var(--primary);
     border-radius: 2px;
-    opacity: 0.7;
+    position: relative;
+    z-index: 1;
 }
 
-/* Botão secundário (mudar modo) */
 .btn-secondary {
-    background: transparent;
-    border: 1.5px solid rgba(255, 255, 255, 0.45);
+    background: var(--accent);
+    border: none;
     color: #fff;
-    padding: 0.65rem 1.75rem;
-    border-radius: 0.6rem;
+    padding: 0.7rem 2rem;
+    border-radius: 0.5rem;
     font-family: 'Poppins', sans-serif;
-    font-size: 0.88rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
     cursor: pointer;
-    transition: background-color 0.2s, border-color 0.2s;
+    transition: background-color 0.2s, transform 0.15s;
     margin-top: 0.25rem;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 2px 12px rgba(245, 158, 11, 0.3);
 }
 
 .btn-secondary:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-color: rgba(255, 255, 255, 0.8);
+    background-color: #d97706;
+    transform: scale(1.02);
 }
 
-/* ══════════════════════════════════════
-   RESPONSIVIDADE
-   ══════════════════════════════════════ */
+.btn-secondary:active {
+    transform: scale(0.99);
+}
+
+/* Responsividade */
 @media (max-width: 768px) {
     .auth-split-container {
         flex-direction: column;
         border-radius: 1rem;
     }
 
-    /* Painel de marca vai para cima em mobile */
     .auth-info-side {
         order: -1;
         padding: 1.75rem 1.5rem;
@@ -306,12 +302,11 @@
         padding: 2rem 1.5rem;
     }
 
-    /* Uma coluna em mobile */
     .form-grid {
         grid-template-columns: 1fr;
     }
 
-    .form-grid .full-width {
+    .auth-field.full-width {
         grid-column: 1;
     }
 }

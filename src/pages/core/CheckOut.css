@@ -5,7 +5,7 @@
   --shadow-md: 0 4px 16px rgba(0, 0, 0, .08), 0 1px 4px rgba(0, 0, 0, .04);
   --transition: 180ms ease;
 
-  min-height: 100vh;
+  min-height: 80vh;
   background: var(--bg-primary);
   font-family: 'Poppins', sans-serif;
   color: var(--text-primary);
@@ -15,7 +15,7 @@
   width: 95%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 36px 1rem 80px;
+  padding: 1rem 1rem;
 }
 
 .stepper {

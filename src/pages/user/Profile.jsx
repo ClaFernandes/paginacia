@@ -3,42 +3,37 @@ import { useAuth } from "../../context/AuthContext";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { useNavigate, Link } from "react-router-dom";
-import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { FaEye, FaEyeSlash, FaChevronLeft } from "react-icons/fa";
 import "./Profile.css";
 
 const Profile = () => {
-    // ── Contexto global e navegação ──
+    // Contexto global e navegação 
     const { user, login, logout } = useAuth();
     const navigate = useNavigate();
 
-    // ── Estados de controlo da interface ──
-    const [isEditing, setIsEditing] = useState(false); // Alterna visualização / edição
-    const [showPass, setShowPass] = useState(false); // Alterna visibilidade da password
+    // Estados de controlo da interface 
+    const [isEditing, setIsEditing] = useState(false);
+    const [showPass, setShowPass] = useState(false);
 
-    // ── React Hook Form inicializado com os dados do utilizador atual ──
+    // React Hook Form inicializado com os dados do utilizador atual
     const { register, handleSubmit, reset } = useForm({
         defaultValues: user,
     });
 
-    // Regex de validação — mesma do Auth.jsx
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$!%*?&])[A-Za-z\d@#$!%*?&]{6,}$/;
 
-    // ── Handler: guardar alterações do perfil ──
+    // Guarda alterações do perfil 
     const onUpdate = (data) => {
-        // Valida correspondência de passwords se foi preenchida
         if (data.password && data.password !== data.confirmPassword) {
             toast.error("As palavras-passe não coincidem!");
             return;
         }
-        // Valida complexidade da nova password
         if (data.password && !passwordRegex.test(data.password)) {
-            toast.error(
-                "A nova password deve ter no mínimo 6 caracteres, com maiúscula, minúscula, número e símbolo."
-            );
+            toast.error("A nova password deve ter no mínimo 6 caracteres, com maiúscula, minúscula, número e símbolo.");
             return;
         }
 
-        // Remove campos de password do objeto se não foram preenchidos
+        // Prepara os dados para atualização
         const finalData = { ...data };
         if (!finalData.password) {
             delete finalData.password;
@@ -47,58 +42,39 @@ const Profile = () => {
             delete finalData.confirmPassword;
         }
 
-        // Atualiza o utilizador no localStorage
+        // Atualiza o utilizador no localStorage e no contexto global
         const savedUsers = JSON.parse(localStorage.getItem("registrations") || "[]");
         const updatedUsers = savedUsers.map((u) =>
             u.email === user.email ? { ...u, ...finalData } : u
         );
         localStorage.setItem("registrations", JSON.stringify(updatedUsers));
-
-        // Sincroniza o contexto global com os novos dados
         login({ ...user, ...finalData }, localStorage.getItem("token"));
         setIsEditing(false);
         toast.success("Perfil atualizado com sucesso!");
     };
 
-    // ── Handler: eliminar conta permanentemente ──
+    // Eliminar conta permanentemente 
     const confirmDeleteAccount = () => {
         const users = JSON.parse(localStorage.getItem("registrations") || "[]");
         const filtered = users.filter((u) => u.email !== user.email);
         localStorage.setItem("registrations", JSON.stringify(filtered));
         logout();
         navigate("/");
-        toast.info("A tua conta foi permanentemente eliminada.");
+        toast.error("A tua conta foi permanentemente eliminada.");
     };
 
-    // Mostra toast de confirmação antes de eliminar — evita eliminação acidental
+    // Toast de confirmação antes de eliminar 
     const handleDelete = () => {
-        toast.warn(
+        toast.info(
             ({ closeToast }) => (
                 <div className="custom-toast-confirm">
-                    <p style={{ margin: "0 0 10px 0", fontWeight: "bold" }}>
-                        ⚠️ Tens a certeza que queres apagar a tua conta?
-                    </p>
-                    <p style={{ margin: "0 0 15px 0", fontSize: "13px", color: "#555" }}>
-                        Esta ação é irreversível e vais perder todos os teus dados salvos.
-                    </p>
-                    <div style={{ display: "flex", gap: "10px" }}>
-                        <button
-                            onClick={() => { confirmDeleteAccount(); closeToast(); }}
-                            style={{
-                                background: "#dc3545", color: "#fff", border: "none",
-                                padding: "6px 12px", borderRadius: "4px",
-                                cursor: "pointer", fontWeight: "bold",
-                            }}
-                        >
+                    <p className="toast-title">Tens a certeza que queres apagar a tua conta?</p>
+                    <p className="toast-desc">Esta ação é irreversível e vais perder todos os teus dados.</p>
+                    <div className="toast-actions">
+                        <button className="toast-btn toast-btn--danger" onClick={() => { confirmDeleteAccount(); closeToast(); }}>
                             Sim, Apagar
                         </button>
-                        <button
-                            onClick={closeToast}
-                            style={{
-                                background: "#6c757d", color: "#fff", border: "none",
-                                padding: "6px 12px", borderRadius: "4px", cursor: "pointer",
-                            }}
-                        >
+                        <button className="toast-btn toast-btn--cancel" onClick={closeToast}>
                             Cancelar
                         </button>
                     </div>
@@ -108,114 +84,160 @@ const Profile = () => {
         );
     };
 
-    // Guarda enquanto os dados do utilizador carregam
     if (!user) return <p>A carregar dados do perfil...</p>;
 
     return (
         <div className="profile-container">
+            <Link to="/" className="btn-back-profile">
+                <FaChevronLeft /> Voltar à Página Inicial
+            </Link>
 
-            {/* Botão de voltar — padrão idêntico ao Contact */}
-            <div className="back-home-wrapper">
-                <Link to="/" className="btn-back-home">
-                    ← Voltar para a Home
-                </Link>
-            </div>
+            <h1>Meu Perfil</h1>
 
-            <h1>O meu Perfil</h1>
-
-            {/* ════════════════ MODO VISUALIZAÇÃO ════════════════ */}
+            {/* Modo visualização */}
             {!isEditing ? (
                 <div className="profile-view">
-                    <p><strong>Nome</strong>{user.nome} {user.apelido}</p>
-                    <p><strong>NIF</strong>{user.nif}</p>
-                    <p><strong>Contacto</strong>{user.telemovel || "Não associado"}</p>
-                    <p><strong>Morada</strong>{user.morada?.logradouro}, nº {user.morada?.numero}</p>
-                    <p><strong>Andar / Porta</strong>{user.morada?.andar || "N/A"}</p>
-                    <p><strong>Localidade</strong>{user.morada?.cidade}, {user.morada?.codigoPostal}</p>
-                    <p><strong>País</strong>{user.morada?.pais}</p>
+                    <div className="profile-row">
+                        <span className="profile-label">Nome</span>
+                        <span className="profile-value">{user.nome} {user.apelido}</span>
+                    </div>
+                    <div className="profile-row">
+                        <span className="profile-label">NIF</span>
+                        <span className="profile-value">{user.nif}</span>
+                    </div>
+                    <div className="profile-row">
+                        <span className="profile-label">Contacto</span>
+                        <span className="profile-value">{user.telemovel || "Não associado"}</span>
+                    </div>
+                    <div className="profile-row">
+                        <span className="profile-label">Morada</span>
+                        <span className="profile-value">{user.morada?.logradouro}, nº {user.morada?.numero}</span>
+                    </div>
+                    <div className="profile-row">
+                        <span className="profile-label">Andar / Porta</span>
+                        <span className="profile-value">{user.morada?.andar || "N/A"}</span>
+                    </div>
+                    <div className="profile-row">
+                        <span className="profile-label">Localidade</span>
+                        <span className="profile-value">{user.morada?.cidade}, {user.morada?.codigoPostal}</span>
+                    </div>
+                    <div className="profile-row">
+                        <span className="profile-label">País</span>
+                        <span className="profile-value">{user.morada?.pais}</span>
+                    </div>
 
-                    <button type="button" onClick={() => setIsEditing(true)}>
+                    <button type="button" className="btn-edit-profile" onClick={() => setIsEditing(true)}>
                         Editar Dados
                     </button>
                 </div>
             ) : (
-                /* ════════════════ MODO EDIÇÃO ════════════════ */
-                <form
-                    onSubmit={handleSubmit(onUpdate)}
-                    className="profile-edit-form"
-                >
+                /* Modo de edição */
+                <form onSubmit={handleSubmit(onUpdate)} className="profile-edit-form">
                     <h3>Editar Informações</h3>
 
-                    {/* Dados pessoais */}
-                    <input {...register("nome", { required: true })} placeholder="Primeiro Nome" />
-                    <input {...register("apelido", { required: true })} placeholder="Apelido" />
-                    <input {...register("nif", { required: true })} placeholder="NIF" />
-                    <input {...register("telemovel")} placeholder="Telemóvel" />
+                    <div className="profile-grid">
+                        {/* Linha 1: Nome - Apelido */}
+                        <div className="profile-field">
+                            <label>Nome</label>
+                            <input {...register("nome", { required: true })} placeholder="Nome" />
+                        </div>
+                        <div className="profile-field">
+                            <label>Apelido</label>
+                            <input {...register("apelido", { required: true })} placeholder="Apelido" />
+                        </div>
 
-                    {/* Morada */}
-                    <input {...register("morada.logradouro", { required: true })} placeholder="Rua / Logradouro" />
-                    <input {...register("morada.numero")} placeholder="Número da Porta" />
-                    <input {...register("morada.andar")} placeholder="Andar / Apartamento" />
-                    <input {...register("morada.codigoPostal", { required: true })} placeholder="Código Postal" />
-                    <input {...register("morada.cidade", { required: true })} placeholder="Cidade" />
-                    <input {...register("morada.pais", { required: true })} placeholder="País" />
+                        {/* Linha 2: NIF - Telemóvel */}
+                        <div className="profile-field">
+                            <label>NIF</label>
+                            <input {...register("nif", { required: true })} placeholder="NIF" />
+                        </div>
+                        <div className="profile-field">
+                            <label>Telemóvel</label>
+                            <input {...register("telemovel")} placeholder="Telemóvel" />
+                        </div>
 
-                    {/* Password opcional — bloco com nota informativa */}
-                    <div className="pass-group">
-                        <small>Deixa em branco se não pretenderes alterar a palavra-passe atual.</small>
-                        <input
-                            type={showPass ? "text" : "password"}
-                            {...register("password")}
-                            placeholder="Nova Password (Opcional)"
-                        />
-                        <input
-                            type={showPass ? "text" : "password"}
-                            {...register("confirmPassword")}
-                            placeholder="Confirmar Nova Password"
-                        />
-                        {/* Botão toggle do olho dentro do bloco de password */}
-                        <button
-                            type="button"
-                            onClick={() => setShowPass(!showPass)}
-                            style={{
-                                alignSelf: "flex-end",
-                                background: "none",
-                                border: "none",
-                                cursor: "pointer",
-                                color: "var(--text-secondary)",
-                                fontSize: "1rem",
-                                padding: "0",
-                                display: "flex",
-                                alignItems: "center",
-                                gap: "0.3rem",
-                            }}
-                        >
-                            {showPass ? <FaEyeSlash /> : <FaEye />}
-                            <span style={{ fontSize: "0.78rem" }}>
-                                {showPass ? "Ocultar" : "Mostrar"} passwords
-                            </span>
-                        </button>
+                        {/* Linha 3: Rua - Nº */}
+                        <div className="profile-field">
+                            <label>Rua/ Avenida...</label>
+                            <input {...register("morada.logradouro", { required: true })} placeholder="Rua, Avenida…" />
+                        </div>
+                        <div className="profile-field">
+                            <label>Nº</label>
+                            <input {...register("morada.numero")} placeholder="12" />
+                        </div>
+
+                        {/* Linha 4: Andar - Código Postal */}
+                        <div className="profile-field">
+                            <label>Andar / Porta...</label>
+                            <input {...register("morada.andar")} placeholder="2º Dto" />
+                        </div>
+                        <div className="profile-field">
+                            <label>Código Postal</label>
+                            <input {...register("morada.codigoPostal", { required: true })} placeholder="0000-000" />
+                        </div>
+
+                        {/* Linha 5: Cidade - País */}
+                        <div className="profile-field">
+                            <label>Cidade</label>
+                            <input {...register("morada.cidade", { required: true })} placeholder="Lisboa" />
+                        </div>
+                        <div className="profile-field">
+                            <label>País</label>
+                            <input {...register("morada.pais", { required: true })} placeholder="Portugal" />
+                        </div>
                     </div>
 
-                    {/* Ações do formulário */}
+                    {/* Bloco de password opcional */}
+                    <div className="pass-group">
+                        <small>Deixa em branco se não pretenderes alterar a palavra-passe atual.</small>
+                        <div className="profile-field">
+                            <label>Nova Password (Opcional)</label>
+                            <div className="pass-input">
+                                <input
+                                    type={showPass ? "text" : "password"}
+                                    {...register("password")}
+                                    placeholder="Nova password"
+                                />
+                                <button type="button" className="pass-eye-btn" onClick={() => setShowPass(!showPass)}>
+                                    {showPass ? <FaEyeSlash /> : <FaEye />}
+                                </button>
+                            </div>
+                        </div>
+                        <div className="profile-field">
+                            <label>Confirmar Nova Password</label>
+
+                            <div className="pass-input">
+                                <input
+                                    type={showPass ? "text" : "password"}
+                                    {...register("confirmPassword")}
+                                    placeholder="Confirmar nova password"
+                                />
+
+                                <button
+                                    type="button"
+                                    className="pass-eye-btn"
+                                    onClick={() => setShowPass(!showPass)}
+                                >
+                                    {showPass ? <FaEyeSlash /> : <FaEye />}
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="form-actions">
-                        <button type="submit">Guardar Alterações</button>
-                        <button
-                            type="button"
-                            onClick={() => { reset(); setIsEditing(false); }}
-                        >
+                        <button type="submit" className="btn-save-profile">Guardar Alterações</button>
+                        <button type="button" className="btn-cancel-profile" onClick={() => { reset(); setIsEditing(false); }}>
                             Cancelar
                         </button>
                     </div>
                 </form>
             )}
 
-            {/* ── Ações de conta (fora do card) ── */}
-            <div className="profile-actions" style={{ marginTop: "1.5rem" }}>
-                <button type="button" onClick={logout}>Terminar Sessão</button>
-                <button type="button" onClick={handleDelete}>Apagar Conta</button>
+            {/* Ações de conta */}
+            <div className="profile-actions">
+                <button type="button" className="btn-logout" onClick={logout}>Terminar Sessão</button>
+                <button type="button" className="btn-delete" onClick={handleDelete}>Apagar Conta</button>
             </div>
-
         </div>
     );
 };

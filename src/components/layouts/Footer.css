@@ -129,7 +129,7 @@
     cursor: pointer;
     transition: opacity 0.2s, transform 0.2s;
     background-color: var(--accent);
-    color: var(--bg-dark);
+    color: #FFFFFF;
     font-weight: 700;
 }
 
@@ -148,6 +148,7 @@
     background-color: var(--bg-dark-alt);
     color: #FFFFFF;
 }
+
 
 .footer-bottom a {
     color: var(--accent);

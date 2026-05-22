@@ -1,9 +1,3 @@
-/* =============================================
-   PROFILE.CSS — Perfil do utilizador
-   Segue o padrão visual do Contact.css
-   ============================================= */
-
-/* Wrapper de página, alinha com o padrão contact-wrapper */
 .profile-container {
     width: 95%;
     max-width: 750px;
@@ -14,31 +8,21 @@
     gap: 0.5rem;
 }
 
-/* Botão de voltar — idêntico ao .btn-back-contact */
-.back-home-wrapper {
-    margin-bottom: 1rem;
-}
-
-.btn-back-home {
+.btn-back-profile {
     display: inline-flex;
     align-items: center;
     gap: 6px;
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-primary);
+    margin-bottom: 1rem;
     transition: color 0.2s;
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    font-family: 'Poppins', sans-serif;
 }
 
-.btn-back-home:hover {
+.btn-back-profile:hover {
     color: var(--primary);
 }
 
-/* Título da página */
 .profile-container>h1 {
     font-size: 2.2rem;
     font-weight: 700;
@@ -46,46 +30,45 @@
     margin-bottom: 0.5rem;
 }
 
-/* ── Card partilhado (visualização e edição) ── */
 .profile-view,
 .profile-edit-form {
     background-color: var(--bg-secondary);
     width: 100%;
-    padding: 3rem 3.5rem;
+    padding: 2.5rem 3rem;
     border-radius: 1rem;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 0;
 }
 
-/* ══ MODO VISUALIZAÇÃO ══ */
-.profile-view p {
-    font-size: 0.95rem;
-    color: var(--text-primary);
+.profile-row {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0.85rem 0;
     border-bottom: 1px solid var(--border);
-    padding-bottom: 0.75rem;
-    line-height: 1.5;
 }
 
-/* Remove separador do último item */
-.profile-view p:last-of-type {
+.profile-row:last-of-type {
     border-bottom: none;
 }
 
-.profile-view strong {
-    color: var(--text-secondary);
-    font-size: 0.78rem;
+.profile-label {
+    font-size: 0.72rem;
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.15rem;
+    color: var(--text-secondary);
 }
 
-/* Botão "Editar Dados" dentro do card de visualização */
-.profile-view button {
-    margin-top: 0.5rem;
+.profile-value {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.btn-edit-profile {
+    margin-top: 1.5rem;
     align-self: flex-start;
     background-color: var(--bg-dark);
     color: #fff;
@@ -95,33 +78,52 @@
     font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
-    letter-spacing: 0.04em;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
 }
 
-.profile-view button:hover {
+.btn-edit-profile:hover {
     background-color: var(--bg-dark-alt);
     transform: scale(1.02);
 }
 
-/* ══ MODO EDIÇÃO ══ */
 .profile-edit-form h3 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--text-primary);
+    margin-bottom: 1rem;
+}
+
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
     margin-bottom: 0.5rem;
 }
 
-/* Inputs no formulário de edição — padrão Contact */
+.profile-field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.profile-field label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+}
+
 .profile-edit-form input {
     width: 100%;
+    height: 40px;
     border: 1px solid var(--border);
-    padding: 0.5rem 0.75rem;
+    padding: 0 0.75rem;
     border-radius: 0.25rem;
     background-color: var(--bg-primary);
     font-family: 'Poppins', sans-serif;
-    font-size: 0.85rem;
+    font-size: 0.88rem;
     color: var(--text-primary);
     transition: border-color 0.2s, box-shadow 0.2s;
     outline: none;
@@ -139,15 +141,44 @@
     opacity: 0.6;
 }
 
-/* Secção da password (nota + inputs agrupados) */
+.pass-input {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.pass-input input {
+    padding-right: 2.8rem;
+}
+
+.pass-eye-btn {
+    position: absolute;
+    right: 0.8rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    padding: 0;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.pass-eye-btn:hover {
+    color: var(--text-primary);
+}
+
 .pass-group {
     display: flex;
     flex-direction: column;
-    gap: 0.6rem;
-    padding: 1rem;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
     background-color: var(--bg-primary);
     border-radius: 0.5rem;
     border: 1px solid var(--border);
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
 }
 
 .pass-group small {
@@ -155,32 +186,13 @@
     font-size: 0.78rem;
 }
 
-/* Botão do olho dentro do pass-group */
-.pass-group>button[type="button"] {
-    position: absolute;
-    right: 1.6rem;
-    /* alinhado com o padding do card */
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--text-secondary);
-    font-size: 1rem;
-    padding: 0;
-    display: flex;
-    align-items: center;
-}
-
-/* Botões de ação do formulário de edição */
 .form-actions {
     display: flex;
     gap: 1rem;
-    margin-top: 0.5rem;
     flex-wrap: wrap;
 }
 
-.form-actions button[type="submit"] {
+.btn-save-profile {
     background-color: var(--bg-dark);
     color: #fff;
     border: none;
@@ -189,17 +201,16 @@
     font-family: 'Poppins', sans-serif;
     font-size: 0.9rem;
     font-weight: 600;
-    letter-spacing: 0.04em;
     cursor: pointer;
     transition: background-color 0.2s, transform 0.2s;
 }
 
-.form-actions button[type="submit"]:hover {
+.btn-save-profile:hover {
     background-color: var(--bg-dark-alt);
     transform: scale(1.02);
 }
 
-.form-actions button[type="button"] {
+.btn-cancel-profile {
     background-color: transparent;
     color: var(--text-secondary);
     border: 1.5px solid var(--border);
@@ -212,12 +223,11 @@
     transition: border-color 0.2s, color 0.2s;
 }
 
-.form-actions button[type="button"]:hover {
+.btn-cancel-profile:hover {
     border-color: var(--text-primary);
     color: var(--text-primary);
 }
 
-/* ── Ações de conta (terminar sessão / apagar conta) ── */
 .profile-actions {
     display: flex;
     align-items: center;
@@ -226,42 +236,88 @@
     padding-top: 0.5rem;
 }
 
-/* Botão "Terminar Sessão" */
-.profile-actions button:first-child {
+.btn-logout {
     background-color: transparent;
-    color: var(--text-secondary);
-    border: 1.5px solid var(--border);
-    padding: 0.6rem 1.5rem;
+    color: var(--bg-dark);
+    border: 1px solid var(--bg-dark);
+    padding: 0.65rem 1.5rem;
     border-radius: 0.5rem;
     font-family: 'Poppins', sans-serif;
     font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
-    transition: border-color 0.2s, color 0.2s;
+    transition: all 0.2s ease;
 }
 
-.profile-actions button:first-child:hover {
-    border-color: var(--text-primary);
-    color: var(--text-primary);
+.btn-logout:hover {
+    background-color: var(--bg-dark);
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-/* Botão "Apagar Conta" — destrutivo */
-.profile-actions button:last-child {
-    background-color: transparent;
-    color: var(--danger);
-    border: 1.5px solid var(--danger);
-    padding: 0.6rem 1.5rem;
-    border-radius: 0.5rem;
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.85rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
+.btn-logout:active {
+    transform: scale(0.98);
 }
 
-.profile-actions button:last-child:hover {
+.btn-delete {
     background-color: var(--danger);
+    color: #ffffff;
+    border: 1px solid var(--danger);
+    padding: 0.65rem 1.5rem;
+    border-radius: 0.5rem;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0 2px 4px rgba(239, 68, 68, 0.2);
+}
+
+.btn-delete:hover {
+    filter: brightness(0.85);
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-delete:active {
+    transform: translateY(1px);
+    filter: brightness(0.75);
+}
+
+
+.toast-title {
+    margin: 0 0 8px 0;
+    font-weight: 700;
+    font-size: 1rem;
+}
+
+.toast-desc {
+    margin: 0 0 14px 0;
+    font-size: 0.8rem;
+}
+
+.toast-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.toast-btn {
+    border: none;
+    padding: 6px 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.82rem;
+}
+
+.toast-btn--danger {
+    background: var(--danger);
     color: #fff;
+}
+
+.toast-btn--cancel {
+    background-color: var(--primary);
+    color: #ffffff;
 }
 
 /* ── Responsividade ── */
@@ -272,20 +328,20 @@
         padding: 2rem 1.5rem;
     }
 
-    .form-actions {
-        flex-direction: column;
+    .profile-grid {
+        grid-template-columns: 1fr;
     }
 
-    .form-actions button {
-        width: 100%;
-        text-align: center;
+    .profile-field--full {
+        grid-column: 1;
     }
 
+    .form-actions,
     .profile-actions {
         flex-direction: column;
-        align-items: stretch;
     }
 
+    .form-actions button,
     .profile-actions button {
         width: 100%;
         text-align: center;

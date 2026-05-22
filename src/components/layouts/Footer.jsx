@@ -10,8 +10,7 @@ function Footer() {
   // Submissão newsletter fake
   const handleNewsletterSubmit = (e) => {
     e.preventDefault();
-
-    toast("Obrigado! Subscreveu a nossa newsletter com sucesso.");
+    toast.success("Obrigado! Subscreveu a nossa newsletter com sucesso.");
     e.target.reset();
   };
 

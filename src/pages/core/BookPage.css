@@ -19,6 +19,13 @@
     width: 100%;
 }
 
+/* Estado ativo do favorito */
+.favorite-btn-square.is-favorite {
+    color: var(--danger);
+    border-color: var(--danger);
+    background-color: #fff1f1;
+}
+
 .badges-wrapper {
     position: absolute;
     top: -15px;

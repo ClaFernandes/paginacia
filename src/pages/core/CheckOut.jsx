@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import { useForm, useWatch } from "react-hook-form";
-
 import { useAuth } from "../../context/AuthContext";
 import { useCart } from "../../context/CartContext";
-
 import { useNavigate, Link } from "react-router-dom";
-
 import {
   FaLock,
   FaShoppingBag,
@@ -16,11 +13,11 @@ import {
   FaChevronLeft,
   FaEdit,
 } from "react-icons/fa";
-
 import { toast } from "react-toastify";
 import "./Checkout.css";
 
 function Checkout() {
+  // Contextos e estados
   const { user, isLoggedIn } = useAuth();
   const { cartItems: cart, clearCart } = useCart();
   const navigate = useNavigate();
@@ -132,7 +129,6 @@ function Checkout() {
 
       <div className="checkout-container">
         <form onSubmit={handleSubmit(onOrderSubmit)} className="checkout-body">
-
           <div className="checkout-main">
 
             {/* Etapa 1: Entrega */}
@@ -142,7 +138,6 @@ function Checkout() {
                   <FaMapMarkerAlt />
                   <h2>Morada de Entrega</h2>
                 </div>
-
                 {isEditing ? (
                   // Modo edição: inputs ligados ao React Hook Form via register()
                   <div className="edit-grid">
@@ -163,7 +158,7 @@ function Checkout() {
                       <input {...register("telemovel")} placeholder="+351 9xx xxx xxx" className="field-input" />
                     </div>
                     <div className="field-group" style={{ flex: "2 1 200px" }}>
-                      <label>Logradouro</label>
+                      <label>Rua/ Avenida...</label>
                       <input {...register("morada")} placeholder="Rua, Avenida…" className="field-input" />
                     </div>
                     <div className="field-group">
@@ -171,7 +166,7 @@ function Checkout() {
                       <input {...register("numero")} placeholder="12" className="field-input" />
                     </div>
                     <div className="field-group">
-                      <label>Andar/Porta</label>
+                      <label>Andar/ Porta...</label>
                       <input {...register("andar")} placeholder="2º Dto" className="field-input" />
                     </div>
                     <div className="field-group">
