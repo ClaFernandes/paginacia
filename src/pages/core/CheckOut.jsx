@@ -24,7 +24,7 @@ function Checkout() {
   const [currentStep, setCurrentStep] = useState(1); //controla qual etapa do checkout está ativa
   const [isEditing, setIsEditing] = useState(false);
 
-  // Proteção de rota 
+  // Proteção de rota
   useEffect(() => {
     if (!isLoggedIn) {
       toast.warn("Necessário iniciar sessão para finalizar a compra.");
@@ -32,7 +32,7 @@ function Checkout() {
     }
   }, [isLoggedIn, navigate]);
 
-  // Formulário (React Hook Form) 
+  // Formulário (React Hook Form)
   const { register, handleSubmit, control } = useForm({
     // defaultValues: pré-preenche os campos com os dados do user
     defaultValues: {
@@ -50,7 +50,7 @@ function Checkout() {
     },
   });
 
-  // useWatch observa o campo metodoPagamento 
+  // useWatch observa o campo metodoPagamento
   const selectedPayment = useWatch({
     control,
     name: "metodoPagamento",
@@ -63,10 +63,10 @@ function Checkout() {
     return new URL(`../../assets/images/${imageName}`, import.meta.url).href;
   };
 
-  // Total do carrinho 
+  // Total do carrinho
   const cartTotal = cart.reduce(
     (acc, item) => acc + (item.price ?? 0) * (item.quantity || 1),
-    0
+    0,
   );
 
   // Funções para avançar/recuar entre etapas.
@@ -114,14 +114,18 @@ function Checkout() {
           { n: 3, label: "Confirmação" },
         ].map(({ n, label }, i, arr) => (
           <div key={n} className="stepper-group">
-            <div className={`stepper-node ${currentStep >= n ? "active" : ""} ${currentStep === n ? "current" : ""}`}>
+            <div
+              className={`stepper-node ${currentStep >= n ? "active" : ""} ${currentStep === n ? "current" : ""}`}
+            >
               {/* ✓ nos passos concluídos, número nos restantes */}
               <span className="stepper-num">{currentStep > n ? "✓" : n}</span>
               <span className="stepper-label">{label}</span>
             </div>
             {/* Só renderiza se não for o último item */}
             {i < arr.length - 1 && (
-              <div className={`stepper-track ${currentStep > n ? "filled" : ""}`} />
+              <div
+                className={`stepper-track ${currentStep > n ? "filled" : ""}`}
+              />
             )}
           </div>
         ))}
@@ -130,7 +134,6 @@ function Checkout() {
       <div className="checkout-container">
         <form onSubmit={handleSubmit(onOrderSubmit)} className="checkout-body">
           <div className="checkout-main">
-
             {/* Etapa 1: Entrega */}
             {currentStep === 1 && (
               <div className="step-card animate-in">
@@ -143,47 +146,91 @@ function Checkout() {
                   <div className="edit-grid">
                     <div className="field-group">
                       <label>Nome</label>
-                      <input {...register("nome")} placeholder="Nome" className="field-input" />
+                      <input
+                        {...register("nome")}
+                        placeholder="Nome"
+                        className="field-input"
+                      />
                     </div>
                     <div className="field-group">
                       <label>Apelido</label>
-                      <input {...register("apelido")} placeholder="Apelido" className="field-input" />
+                      <input
+                        {...register("apelido")}
+                        placeholder="Apelido"
+                        className="field-input"
+                      />
                     </div>
                     <div className="field-group">
                       <label>NIF</label>
-                      <input {...register("nif")} placeholder="000 000 000" className="field-input" />
+                      <input
+                        {...register("nif")}
+                        placeholder="000 000 000"
+                        className="field-input"
+                      />
                     </div>
                     <div className="field-group">
                       <label>Telemóvel</label>
-                      <input {...register("telemovel")} placeholder="+351 9xx xxx xxx" className="field-input" />
+                      <input
+                        {...register("telemovel")}
+                        placeholder="+351 9xx xxx xxx"
+                        className="field-input"
+                      />
                     </div>
                     <div className="field-group" style={{ flex: "2 1 200px" }}>
                       <label>Rua/ Avenida...</label>
-                      <input {...register("morada")} placeholder="Rua, Avenida…" className="field-input" />
+                      <input
+                        {...register("morada")}
+                        placeholder="Rua, Avenida…"
+                        className="field-input"
+                      />
                     </div>
                     <div className="field-group">
                       <label>Nº</label>
-                      <input {...register("numero")} placeholder="12" className="field-input" />
+                      <input
+                        {...register("numero")}
+                        placeholder="12"
+                        className="field-input"
+                      />
                     </div>
                     <div className="field-group">
                       <label>Andar/ Porta...</label>
-                      <input {...register("andar")} placeholder="2º Dto" className="field-input" />
+                      <input
+                        {...register("andar")}
+                        placeholder="2º Dto"
+                        className="field-input"
+                      />
                     </div>
                     <div className="field-group">
                       <label>Código Postal</label>
-                      <input {...register("codigoPostal")} placeholder="0000-000" className="field-input" />
+                      <input
+                        {...register("codigoPostal")}
+                        placeholder="0000-000"
+                        className="field-input"
+                      />
                     </div>
                     {/* Cidade e País na mesma linha — flex: "1 1 45%" força os dois a partilhar a linha */}
                     <div className="field-group" style={{ flex: "1 1 45%" }}>
                       <label>Cidade</label>
-                      <input {...register("cidade")} placeholder="Lisboa" className="field-input" />
+                      <input
+                        {...register("cidade")}
+                        placeholder="Lisboa"
+                        className="field-input"
+                      />
                     </div>
                     <div className="field-group" style={{ flex: "1 1 45%" }}>
                       <label>País</label>
-                      <input {...register("pais")} placeholder="Portugal" className="field-input" />
+                      <input
+                        {...register("pais")}
+                        placeholder="Portugal"
+                        className="field-input"
+                      />
                     </div>
                     <div className="field-group full">
-                      <button type="button" onClick={() => setIsEditing(false)} className="btn-save">
+                      <button
+                        type="button"
+                        onClick={() => setIsEditing(false)}
+                        className="btn-save"
+                      >
                         Guardar Dados
                       </button>
                     </div>
@@ -192,7 +239,9 @@ function Checkout() {
                   // Modo leitura: dados do utilizador vindos do AuthContext
                   <div className="address-card">
                     <div className="address-card-body">
-                      <p className="address-name">{user?.nome} {user?.apelido}</p>
+                      <p className="address-name">
+                        {user?.nome} {user?.apelido}
+                      </p>
                       <p className="address-line">
                         {user?.morada?.logradouro}, nº {user?.morada?.numero}
                         {user?.morada?.andar ? `, ${user?.morada?.andar}` : ""}
@@ -200,16 +249,22 @@ function Checkout() {
                       <p className="address-line">
                         {user?.morada?.codigoPostal} {user?.morada?.cidade}
                       </p>
-                      <p className="address-line">
-                        {user?.morada?.pais}
-                      </p>
+                      <p className="address-line">{user?.morada?.pais}</p>
                       <div className="address-meta">
-                        <span><strong>NIF:</strong> {user?.nif}</span>
+                        <span>
+                          <strong>NIF:</strong> {user?.nif}
+                        </span>
                         <span className="meta-sep">·</span>
-                        <span><strong>Telemóvel:</strong> {user?.telemovel}</span>
+                        <span>
+                          <strong>Telemóvel:</strong> {user?.telemovel}
+                        </span>
                       </div>
                     </div>
-                    <button type="button" className="edit-btn" onClick={() => setIsEditing(true)}>
+                    <button
+                      type="button"
+                      className="edit-btn"
+                      onClick={() => setIsEditing(true)}
+                    >
                       <FaEdit /> Editar
                     </button>
                   </div>
@@ -219,7 +274,11 @@ function Checkout() {
                   <Link to="/" className="btn-ghost">
                     <FaChevronLeft /> Voltar
                   </Link>
-                  <button type="button" onClick={nextStep} className="btn-primary">
+                  <button
+                    type="button"
+                    onClick={nextStep}
+                    className="btn-primary"
+                  >
                     Continuar <FaChevronRight />
                   </button>
                 </div>
@@ -247,8 +306,12 @@ function Checkout() {
                         className="payment-radio"
                       />
                       <div className="payment-card-inner">
-                        <span className="payment-label">{paymentLabels[m].label}</span>
-                        <span className="payment-desc">{paymentLabels[m].desc}</span>
+                        <span className="payment-label">
+                          {paymentLabels[m].label}
+                        </span>
+                        <span className="payment-desc">
+                          {paymentLabels[m].desc}
+                        </span>
                       </div>
                       {/* Indicador visual circular do estado selecionado */}
                       <div className="payment-check" />
@@ -257,10 +320,18 @@ function Checkout() {
                 </div>
 
                 <div className="step-footer">
-                  <button type="button" onClick={prevStep} className="btn-ghost">
+                  <button
+                    type="button"
+                    onClick={prevStep}
+                    className="btn-ghost"
+                  >
                     <FaChevronLeft /> Voltar
                   </button>
-                  <button type="button" onClick={nextStep} className="btn-primary">
+                  <button
+                    type="button"
+                    onClick={nextStep}
+                    className="btn-primary"
+                  >
                     Continuar <FaChevronRight />
                   </button>
                 </div>
@@ -286,7 +357,8 @@ function Checkout() {
                     <span className="confirm-label">Morada</span>
                     <span className="confirm-value">
                       {user?.morada?.logradouro}, nº {user?.morada?.numero},{" "}
-                      {user?.morada?.codigoPostal} {user?.morada?.cidade} - {user?.morada?.pais}
+                      {user?.morada?.codigoPostal} {user?.morada?.cidade} -{" "}
+                      {user?.morada?.pais}
                     </span>
                   </div>
                   <div className="confirm-row">
@@ -297,12 +369,18 @@ function Checkout() {
                   </div>
                   <div className="confirm-row confirm-total">
                     <span className="confirm-label">Total</span>
-                    <span className="confirm-value">{cartTotal.toFixed(2)} €</span>
+                    <span className="confirm-value">
+                      {cartTotal.toFixed(2)} €
+                    </span>
                   </div>
                 </div>
 
                 <div className="step-footer">
-                  <button type="button" onClick={prevStep} className="btn-ghost">
+                  <button
+                    type="button"
+                    onClick={prevStep}
+                    className="btn-ghost"
+                  >
                     <FaChevronLeft /> Voltar
                   </button>
                   <button type="submit" className="btn-confirm">
@@ -330,7 +408,9 @@ function Checkout() {
                     )}
                     <div className="sidebar-item-info">
                       <p className="sidebar-item-title">{item.title}</p>
-                      <p className="sidebar-item-qty">Qtd. {item.quantity || 1}</p>
+                      <p className="sidebar-item-qty">
+                        Qtd. {item.quantity || 1}
+                      </p>
                     </div>
                     <p className="sidebar-item-price">
                       {/* Calcula o subtotal do item: preço × quantidade */}
@@ -344,7 +424,9 @@ function Checkout() {
 
               <div className="sidebar-total">
                 <span>Total</span>
-                <span className="sidebar-total-value">{cartTotal.toFixed(2)} €</span>
+                <span className="sidebar-total-value">
+                  {cartTotal.toFixed(2)} €
+                </span>
               </div>
             </div>
           </aside>
