@@ -288,16 +288,20 @@
 .toast-title {
     margin: 0 0 8px 0;
     font-weight: 700;
-    font-size: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+    color: var(--text-primary);
 }
 
 .toast-desc {
     margin: 0 0 14px 0;
-    font-size: 0.8rem;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
 }
 
 .toast-actions {
     display: flex;
+    justify-content: center;
     gap: 10px;
 }
 
